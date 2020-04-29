@@ -15,6 +15,4 @@ orchestrate_state-success:
     - changes: False
     - result: True
     - comment: |
-        Finished ok
-        event_data: {{ random_start }}
         sleep: {{ random_start }}
