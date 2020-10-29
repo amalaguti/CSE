@@ -1,3 +1,7 @@
+INTEGRATION
+
+
+
 {% set disk_avail = salt['disk.usage']() %}
 {% set disk_avail_root = disk_avail['/']['available'] %}
 show:
