@@ -1,7 +1,6 @@
-base:
-  config_data:
-    env: MASTER BASE
-    users:
-      - jdoe
-      - wbrown
-  
+config_data:
+  env: MASTER BASE
+  users:
+    - jdoe
+    - wbrown
+ 
