@@ -5,6 +5,6 @@ machine_info:
     - result: True
     - comment: |
         {{ grains['id'] }} - {{ grains['osfinger'] }} - {{ grains['saltversion'] }}
-        {% if grains['kernel'] == 'Linux' %}
+        {%- if grains['kernel'] == 'Linux' %}
         {{ salt['cmd.run']('date') }}
-        {% endif %}
+        {%- endif %}
