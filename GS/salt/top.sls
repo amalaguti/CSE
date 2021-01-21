@@ -13,6 +13,6 @@ dev:
     #- highstates.sec_enforce_L1
     - highstates.dev_1
 
-  'bar:foo':
+  'bar:*':
     - match: pillar
     - highstates.machine_info
