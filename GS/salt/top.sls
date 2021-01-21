@@ -13,6 +13,6 @@ dev:
     #- highstates.sec_enforce_L1
     - highstates.dev_1
 
-  'config_data:env:QA dev'
+  'config_data:env:QA dev':
     - match: pillar
     - highstates.machine_info
