@@ -3,3 +3,5 @@ config_data:
   users:
     - jdoe
     - wbrown
+
+bar: foo
