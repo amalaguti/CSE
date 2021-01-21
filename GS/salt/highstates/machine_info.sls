@@ -10,3 +10,8 @@ machine_info:
         {%- if grains['kernel'] == 'Linux' %}
         {{ salt['cmd.run']('date') }}
         {%- endif %}
+        {% if pillar['config_data']['env'] == 'QA dev' %}
+        DEV Environment
+        {% else %}
+        PROD Environment
+        {% endif %}
