@@ -6,5 +6,5 @@ machine_info:
     - comment: |
         {{ grains['id'] }} - {{ grains['osfinger'] }} - {{ grains['saltversion'] }}
         {% if grains['kernel'] == 'Linux' %}
-        {% salt['cd.run']('date') %}
+        {{ salt['cmd.run']('date') }}
         {% endif %}
