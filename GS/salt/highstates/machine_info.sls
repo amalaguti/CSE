@@ -4,7 +4,9 @@ machine_info:
     - changes: False
     - result: True
     - comment: |
-        {{ grains['id'] }} - {{ grains['osfinger'] }} - {{ grains['saltversion'] }}
+        minion id: {{ grains['id'] }}
+        platform: {{ grains['osfinger'] }}
+        salt version: {{ grains['saltversion'] }}
         {%- if grains['kernel'] == 'Linux' %}
         {{ salt['cmd.run']('date') }}
         {%- endif %}
