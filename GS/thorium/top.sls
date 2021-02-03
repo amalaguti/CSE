@@ -1,0 +1,3 @@
+base:
+  '*':
+    - key_clean
