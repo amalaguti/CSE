@@ -4,4 +4,4 @@ base:
     
 dev:
   '*':
-    - thorium.key_clean
+    - thorium.key_clean_dev
