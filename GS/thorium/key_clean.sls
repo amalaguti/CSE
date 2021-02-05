@@ -9,3 +9,7 @@ keydel:
     - delete: 90
     - require:
       - status: statreg
+      
+myreg:
+  file.save
+      
