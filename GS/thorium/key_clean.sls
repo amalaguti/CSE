@@ -6,7 +6,7 @@ statreg:
 # deletes the key from the master when the minion has been gone for 60 seconds
 keydel:
   key.timeout:
-    - delete: 90
+    - delete: 60
     - require:
       - status: statreg
       
