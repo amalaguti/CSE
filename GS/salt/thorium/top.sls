@@ -1,3 +1,3 @@
 base:
   '*':
-    - key_clean
+    - thorium.key_clean
