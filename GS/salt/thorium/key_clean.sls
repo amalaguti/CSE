@@ -9,8 +9,8 @@ keydel:
     - delete: 150
     - start_time: 22
     - end_time: 08
-    #- onchanges:
-    #  - status: statreg
+    - onchanges:
+      - status: statreg
       
       
 #myreg:
