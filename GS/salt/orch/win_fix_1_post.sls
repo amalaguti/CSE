@@ -3,7 +3,7 @@
 {% set minion = salt['pillar.get']('minion', None) %}
 
 # Similar check done by Reactor (example)
-{% if event_data['task'] == 'win_fix_1' and event_data['status'] == 'complete' and minion not None %}
+{% if event_data['task'] == 'win_fix_1' and event_data['status'] == 'complete' and minion %}
 post_deployment_task:
   test.configurable_test_state:
     - name: doing post deployment task
