@@ -3,5 +3,5 @@ winmgmt/do_restart:
     - data:
         task: "win_fix_1"
         status: "complete"
-        master_ip: {{ salt['config.get']('master_ip') }}
+        minion_master_ip: {{ salt['config.get']('master_ip') }}
 
