@@ -20,7 +20,7 @@ reboot_minion:
     - name: system.reboot
     - tgt: '{{ minion }}'
     - arg:
-      - 20
+      - 1
 
 wait_for_reboot:
   salt.wait_for_event:
@@ -29,7 +29,7 @@ wait_for_reboot:
       - {{ minion }}
     - require:
       - salt: reboot_minion
-    - timeout: 10
+    - timeout: 300
 
 post_deployment_task_2:
   test.configurable_test_state:
