@@ -20,7 +20,7 @@ reboot_minion:
     - name: system.reboot
     - tgt: '{{ minion }}'
     - arg:
-      - 0
+      - 20
 
 wait_for_reboot:
   salt.wait_for_event:
