@@ -43,13 +43,4 @@ reboot_failed:
     - comment: {{ minion }} did not reboot or did not come back
     - onfail:
       - salt: wait_for_reboot
-        
-        
-{% else %}
-post_deployment_task:
-  test.configurable_test_state:
-    - name: doing post deployment task
-    - result: True
-    - changes: False
-    - comment: Nothing else to do
-{% endif %}
+ 
