@@ -38,7 +38,7 @@ post_deployment_task_2:
     - changes: False
     - comment: {{ minion }} rebooted
     - require:
-      - salt.wait_for_reboot
+      - salt: wait_for_reboot
 
 reboot_failed:
   test.configurable_test_state:
@@ -47,7 +47,7 @@ reboot_failed:
     - changes: False
     - comment: {{ minion }} did not reboot or did not come back
     - onfail:
-      - salt.wait_for_reboot
+      - salt: wait_for_reboot
         
         
 {% else %}
