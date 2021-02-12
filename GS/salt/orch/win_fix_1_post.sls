@@ -14,6 +14,28 @@ post_deployment_task:
         Initiating restart of minion {{ minion }}
         
         {{ event_data }}
+        
+reboot_minion:
+  salt.function:
+    - name: system.reboot
+    - tgt: '{{ minion }}'
+
+wait_for_reboot:
+  salt.wait_for_event:
+    - name: salt/minion/*/start
+    - id_list:
+      - {{ minion }}
+    - require:
+      - salt: reboot_minion
+
+post_deployment_task_2:
+  test.configurable_test_state:
+    - name: reboot completed
+    - result: True
+    - changes: False
+    - comment: {{ minion }} rebooted
+        
+      
 {% else %}
 post_deployment_task:
   test.configurable_test_state:
