@@ -2,4 +2,4 @@ beacons:
   status:
     - time:
       - all
-    - interval: 10
+    - interval: 3600
