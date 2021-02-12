@@ -3,7 +3,6 @@
 
 # Similar check done by Reactor (example)
 {% if event_data['task'] == 'win_fix_1' and event_data['status'] == 'complete' %}
-
 post_deployment_task:
   test.configurable_test_state:
     - name: doing post deployment task
@@ -14,7 +13,7 @@ post_deployment_task:
         Initiating restart
         
         {{ event_data }}
-{% elif %}
+{% else %}
 post_deployment_task:
   test.configurable_test_state:
     - name: doing post deployment task
