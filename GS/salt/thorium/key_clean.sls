@@ -9,8 +9,11 @@ keydel:
     - delete: 150
     - start_time: 22
     - end_time: 08
-    - require:
+    - onchanges:
       - status: statreg
       
+      
 myreg:
-  file.save
+  file.save:
+    - require
+      - key: keydel
