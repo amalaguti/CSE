@@ -28,3 +28,5 @@ Wait for service to be healthy:
     - init_wait: 20
     - args:
       - {{ TEMP }}\test.txt
+    - onchanges:
+      - cmd: run_gen_config
