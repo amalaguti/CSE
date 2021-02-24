@@ -8,7 +8,7 @@ show:
 copy_gen_config:
   file.managed:
     - name: {{ TEMP }}\gen_config.bat
-    - source: salt://win_cases/gen_config.bat
+    - source: salt://{{ slspath }}/gen_config.bat
     # this bat sleeps a few seconds then creates a %TEMPT%\test.txt file
 
 run_gen_config:
