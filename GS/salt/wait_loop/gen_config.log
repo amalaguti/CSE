@@ -1,0 +1,62 @@
+[root@ip-172-31-20-217 win_cases]# salt win\* state.sls win_cases.gen_config
+winminion01:
+----------
+          ID: show
+    Function: test.configurable_test_state
+      Result: True
+     Comment: C:\Windows\TEMP
+     Started: 21:04:40.671169
+    Duration: 0.0 ms
+     Changes:
+              ----------
+              testing:
+                  ----------
+                  new:
+                      Something pretended to change
+                  old:
+                      Unchanged
+----------
+          ID: copy_gen_config
+    Function: file.managed
+        Name: C:\Windows\TEMP\gen_config.bat
+      Result: True
+     Comment: File C:\Windows\TEMP\gen_config.bat updated
+     Started: 21:04:40.671169
+    Duration: 78.08 ms
+     Changes:
+              ----------
+              diff:
+                  New file
+----------
+          ID: run_gen_config
+    Function: cmd.run
+        Name: C:\Windows\TEMP\gen_config.bat
+      Result: True
+     Comment: Command "C:\Windows\TEMP\gen_config.bat" run
+     Started: 21:04:40.749249
+    Duration: 4796.725 ms
+     Changes:
+              ----------
+              pid:
+                  5276
+              retcode:
+                  None
+              stderr:
+              stdout:
+----------
+          ID: Wait for service to be healthy
+    Function: loop.until_no_eval
+        Name: file.file_exists
+      Result: True
+     Comment: Call provided the expected results in 3 attempts
+     Started: 21:04:45.545974
+    Duration: 40045.271 ms
+     Changes:
+
+Summary for winminion01
+------------
+Succeeded: 4 (changed=3)
+Failed:    0
+------------
+Total states run:     4
+Total run time:  44.920 s
