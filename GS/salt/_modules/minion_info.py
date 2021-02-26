@@ -3,7 +3,8 @@ log = logging.getLogger(__name__)
 
 def show_data():
     log.info(">>>>>>>>> {0}".format(__name__))
-    return True
+    result = __salt__['reg.read_value']('HKLM', 'SOFTWARE\Amazon\MachineImage', vname='AMIVersion')
+    return result
 
 def get_minion_config():
     """
