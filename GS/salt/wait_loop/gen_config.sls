@@ -35,7 +35,7 @@ Wait for service to be healthy:
 Wait for service to be healthy:
   loop.until_no_eval:
     - name: reg.read_value
-    - expected: 'vdata:2019.06.11'
+    - expected: 'vdata:2019.06.12'
     - compare_operator: data.subdict_match
     - period: 3
     - timeout: 20
