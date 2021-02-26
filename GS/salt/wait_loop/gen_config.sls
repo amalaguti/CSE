@@ -9,6 +9,7 @@ copy_gen_config:
   file.managed:
     - name: {{ TEMP }}\gen_config.bat
     - source: salt://{{ slspath }}/gen_config.bat
+    - parallel: True
     # this bat sleeps a few seconds then creates a %TEMPT%\test.txt file
 
 run_gen_config:
@@ -46,6 +47,7 @@ Wait for file in place:
       - {{ TEMP }}\test.txt
     - onchanges:
       - cmd: run_gen_config
+    - parallel: True
 
 
 
