@@ -31,6 +31,7 @@ Wait for file in place:
       - {{ TEMP }}\test.txt
     - onchanges:
       - cmd: run_gen_config
+    - parallel: True
 
 
 Wait for registry in place:
@@ -48,3 +49,5 @@ Wait for registry in place:
         vname: AMIVersion
     - onchanges:
       - cmd: run_gen_config
+    - parallel: True
+    
