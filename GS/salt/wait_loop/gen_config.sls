@@ -2,6 +2,7 @@
 
 show:
   test.configurable_test_state:
+    - parallel: True  
     - comment: |
         {{ TEMP }}
 
@@ -47,8 +48,7 @@ Wait for file in place:
       - {{ TEMP }}\test.txt
     - onchanges:
       - cmd: run_gen_config
-    - parallel: True
-
+      
 
 
     
