@@ -35,7 +35,7 @@ Wait for service to be healthy:
 Wait for service to be healthy:
   loop.until_no_eval:
     - name: reg.read_value
-    - expected: 2019.06.12
+    - expected: '2019.06.12'
     - compare_operator: eq
     - period: 3
     - timeout: 20
