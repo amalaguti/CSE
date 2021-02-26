@@ -4,8 +4,9 @@ log = logging.getLogger(__name__)
 def show_data():
     log.info(">>>>>>>>> {0}".format(__name__))
     result = __salt__['reg.read_value']('HKLM', 'SOFTWARE\Amazon\MachineImage', vname='AMIVersion')
-    result2 = __utils__['data.get_value'](result, 'vdata')
     '''
+    result2 = __utils__['data.get_value'](result, 'vdata')
+    
     winminion01:
     |_
       ----------
