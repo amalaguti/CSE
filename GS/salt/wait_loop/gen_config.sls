@@ -37,12 +37,13 @@ Wait for service to be healthy:
     - name: reg.read_value
     - expected: 2019.06.12
     - compare_operator: eq
-    - period: 5
-    - timeout: 30
+    - period: 3
+    - timeout: 20
     - init_wait: 3
     - args:
       - HKLM
       - SOFTWARE\Amazon\MachineImage
-      - AMIVersion
+    - kwargs:
+        vname: AMIVersion
     #- onchanges:
     #  - cmd: run_gen_config
