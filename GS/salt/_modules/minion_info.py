@@ -5,7 +5,16 @@ def show_data():
     log.info(">>>>>>>>> {0}".format(__name__))
     result = __salt__['reg.read_value']('HKLM', 'SOFTWARE\Amazon\MachineImage', vname='AMIVersion')
     result2 = __utils__['data.get_value'](result, 'vdata')
-    return result2
+    '''
+    winminion01:
+    |_
+      ----------
+      value:
+          2019.06.12
+    '''
+    
+    result3 = __utils__['data.subdict_match'](result2, 'value:209.06.12')
+    return result3
 
 def get_minion_config():
     """
