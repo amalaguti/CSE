@@ -7,7 +7,7 @@ statreg:
 keydel:
   key.timeout:
     - delete: 150
-    - start_time: 22
+    - start_time: 04
     - end_time: 08
     - onchanges:
       - status: statreg
