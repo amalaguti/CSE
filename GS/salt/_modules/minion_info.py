@@ -1,5 +1,9 @@
-import logger
+import logging
+log = logging.getLogger(__name__)
 
+def show_data():
+    log.info(">>>>>>>>> {0}".format(__name__)"
+    return True
 
 def get_minion_config():
     """
