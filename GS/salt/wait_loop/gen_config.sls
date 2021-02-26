@@ -18,7 +18,7 @@ run_gen_config:
     - timeout: 180
     - creates: {{ TEMP }}\test.txt
 
-Wait for service to be healthy:
+Wait for file in place:
   loop.until_no_eval:
     - name: file.file_exists
     - expected: True
@@ -51,7 +51,7 @@ winminion01:
 -#}
 
 # Wait for value in registry to match
-Wait for service to be healthy:
+Wait for registry in place:
   loop.until_no_eval:
     - name: reg.read_value
     - expected: 'vdata:2019.06.12'
