@@ -15,7 +15,7 @@ run_gen_config:
   cmd.run:
     - name: {{ TEMP }}\gen_config.bat
     - bg: True
-    - timeout: 300
+    - timeout: 180
     - creates: {{ TEMP }}\test.txt
 
 Wait for service to be healthy:
@@ -24,8 +24,8 @@ Wait for service to be healthy:
     - expected: True
     - compare_operator: eq
     - period: 10
-    - timeout: 300
-    - init_wait: 20
+    - timeout: 120
+    - init_wait: 10
     - args:
       - {{ TEMP }}\test.txt
     - onchanges:
