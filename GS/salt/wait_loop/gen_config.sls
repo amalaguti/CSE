@@ -5,7 +5,6 @@ show:
     - comment: |
         {{ TEMP }}
 
-{#
 copy_gen_config:
   file.managed:
     - name: {{ TEMP }}\gen_config.bat
@@ -31,19 +30,39 @@ Wait for service to be healthy:
       - {{ TEMP }}\test.txt
     - onchanges:
       - cmd: run_gen_config
-#}
+
+
+{#- Reading a registry key value
+salt win\* reg.read_value HKLM 'SOFTWARE\Amazon\MachineImage' AMIVersion
+winminion01:
+    ----------
+    hive:
+        HKLM
+    key:
+        SOFTWARE\Amazon\MachineImage
+    success:
+        True
+    vdata:
+        2019.06.12
+    vname:
+        AMIVersion
+    vtype:
+        REG_SZ
+-#}
+
+# Wait for value in registry to match
 Wait for service to be healthy:
   loop.until_no_eval:
     - name: reg.read_value
     - expected: 'vdata:2019.06.12'
     - compare_operator: data.subdict_match
-    - period: 3
-    - timeout: 20
-    - init_wait: 3
+    - period: 10
+    - timeout: 120
+    - init_wait: 10
     - args:
       - HKLM
       - SOFTWARE\Amazon\MachineImage
     - kwargs:
         vname: AMIVersion
-    #- onchanges:
-    #  - cmd: run_gen_config
+    - onchanges:
+      - cmd: run_gen_config
