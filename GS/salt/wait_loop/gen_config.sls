@@ -5,6 +5,7 @@ show:
     - comment: |
         {{ TEMP }}
 
+{#
 copy_gen_config:
   file.managed:
     - name: {{ TEMP }}\gen_config.bat
@@ -30,3 +31,18 @@ Wait for service to be healthy:
       - {{ TEMP }}\test.txt
     - onchanges:
       - cmd: run_gen_config
+#}
+Wait for service to be healthy:
+  loop.until_no_eval:
+    - name: reg.read_value
+    - expected: 2019.06.12
+    - compare_operator: eq
+    - period: 5
+    - timeout: 30
+    - init_wait: 3
+    - args:
+      - HKLM
+      - SOFTWARE\Amazon\MachineImage
+      - AMIVersion
+    #- onchanges:
+    #  - cmd: run_gen_config
