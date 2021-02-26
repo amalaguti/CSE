@@ -1,8 +1,7 @@
 {% set TEMP = salt['environ.get']('TEMP', 'c:\\') %}
 
 show:
-  test.configurable_test_state:
-    - parallel: True  
+  test.configurable_test_state: 
     - comment: |
         {{ TEMP }}
 
