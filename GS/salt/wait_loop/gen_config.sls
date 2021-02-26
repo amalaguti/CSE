@@ -18,6 +18,7 @@ run_gen_config:
     - timeout: 180
     - creates: {{ TEMP }}\test.txt
 
+
 Wait for file in place:
   loop.until_no_eval:
     - name: file.file_exists
@@ -32,25 +33,6 @@ Wait for file in place:
       - cmd: run_gen_config
 
 
-{#- Reading a registry key value
-salt win\* reg.read_value HKLM 'SOFTWARE\Amazon\MachineImage' AMIVersion
-winminion01:
-    ----------
-    hive:
-        HKLM
-    key:
-        SOFTWARE\Amazon\MachineImage
-    success:
-        True
-    vdata:
-        2019.06.12
-    vname:
-        AMIVersion
-    vtype:
-        REG_SZ
--#}
-
-# Wait for value in registry to match
 Wait for registry in place:
   loop.until_no_eval:
     - name: reg.read_value
