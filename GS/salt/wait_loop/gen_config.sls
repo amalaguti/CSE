@@ -18,22 +18,6 @@ run_gen_config:
     - timeout: 180
     - creates: {{ TEMP }}\test.txt
 
-
-Wait for file in place:
-  loop.until_no_eval:
-    - name: file.file_exists
-    - expected: True
-    - compare_operator: eq
-    - period: 10
-    - timeout: 120
-    - init_wait: 10
-    - args:
-      - {{ TEMP }}\test.txt
-    - onchanges:
-      - cmd: run_gen_config
-    - parallel: True
-
-
 Wait for registry in place:
   loop.until_no_eval:
     - name: reg.read_value
@@ -49,5 +33,20 @@ Wait for registry in place:
         vname: AMIVersion
     - onchanges:
       - cmd: run_gen_config
-    - parallel: True
+
+Wait for file in place:
+  loop.until_no_eval:
+    - name: file.file_exists
+    - expected: True
+    - compare_operator: eq
+    - period: 10
+    - timeout: 120
+    - init_wait: 10
+    - args:
+      - {{ TEMP }}\test.txt
+    - onchanges:
+      - cmd: run_gen_config
+
+
+
     
