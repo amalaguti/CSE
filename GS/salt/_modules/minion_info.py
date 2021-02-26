@@ -28,6 +28,10 @@ def get_minion_config():
     print(__opts__.get("beacons", "nada"))
     return True
     '''
+    for i in __utils__.items():
+        print(i)
+    
+    return True
     
     # Combining pillar and minion opts
 
