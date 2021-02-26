@@ -13,9 +13,7 @@ def show_data():
       value:
           2019.06.12
     '''
-    
-    #result3 = __utils__['data.subdict_match'](result2, 'value:2019.06.12')
-    result3 = __utils__['data.subdict_match'](result, 'vdata:2019.06.13')
+    result3 = __utils__['data.subdict_match'](result, 'vdata:2019.06.12')
     return result3
 
 def get_minion_config():
