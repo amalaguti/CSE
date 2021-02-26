@@ -1,3 +1,6 @@
+import logger
+
+
 def get_minion_config():
     """
     Return the minion options and pillar data
