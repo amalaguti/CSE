@@ -5,10 +5,8 @@
 
 
 {% set multithreading = False %} 
-{% if grains['os'] == 'Windows' %}
-  {% if processor_logical > processor_cores %}
-    {% set multithreading = True %}
-  {% endif %}
+{% if grains['os'] == 'Windows' AND processor_logical > processor_cores %}
+  {% set multithreading = True %}
 {% endif %}
 
 
