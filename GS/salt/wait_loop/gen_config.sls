@@ -2,11 +2,14 @@
 {% set system_info = salt['system.get_system_info']() %}
 {% set processor_cores = system_info['processor_cores'] %}
 {% set processors_logical = system_info['processors_logical'] %}
-{% set multithreading = False %} 
-{% if grains['os'] == 'Windows' AND (processor_logical > processor_cores) %}
-{% set multithreading = True %}
-{% endif %}
 
+
+{% set multithreading = False %} 
+{% if grains['os'] == 'Windows' %}
+  {% if processor_logical > processor_cores %}
+    {% set multithreading = True %}
+  {% endif %}
+{% endif %}
 
 
 {% set TEMP = salt['environ.get']('TEMP', 'c:\\') %}
