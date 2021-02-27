@@ -1,22 +1,18 @@
+# Windows only state
+{% if grains['os'] == 'Windows' %}
 {#- Checking multithreading on Windows to make use of parallel: True -#}
 {% set system_info = salt['system.get_system_info']() %}
 {% set processor_cores = system_info['processor_cores'] %}
 {% set processor_logical = system_info['processors_logical'] %}
-
-
 {% set multithreading = False %} 
-{% if grains['os'] == 'Windows' and processor_logical == processor_cores %}
+{% if processor_logical > processor_cores %}
   {% set multithreading = True %}
 {% endif %}
 
 
 {% set TEMP = salt['environ.get']('TEMP', 'c:\\') %}
-
 show:
   test.configurable_test_state:
-    {% if multithreading %}
-    - parallel: True
-    {% endif %}
     - comment: |
         {{ TEMP }}
 
@@ -26,8 +22,6 @@ copy_gen_config:
     - source: salt://{{ slspath }}/gen_config.bat
     # this bat sleeps a few seconds then creates a %TEMPT%\test.txt file
 
-
-{#
 run_gen_config:
   cmd.run:
   
@@ -51,6 +45,9 @@ Wait for registry in place:
         vname: AMIVersion
     - onchanges:
       - cmd: run_gen_config
+    {% if multithreading %}
+    - parallel: True
+    {% endif %}
 
 Wait for file in place:
   loop.until_no_eval:
@@ -64,7 +61,8 @@ Wait for file in place:
       - {{ TEMP }}\test.txt
     - onchanges:
       - cmd: run_gen_config
-      
-#}
+    {% if multithreading %}
+    - parallel: True
+    {% endif %}
 
-    
+{% endif %}    
