@@ -4,9 +4,9 @@
 {% set system_info = salt['system.get_system_info']() %}
 {% set processor_cores = system_info['processor_cores'] %}
 {% set processor_logical = system_info['processors_logical'] %}
-{% set multithreading = False %} 
+{% set win_multithreading = False %} 
 {% if processor_logical > processor_cores %}
-  {% set multithreading = True %}
+  {% set win_multithreading = True %}
 {% endif %}
 
 
@@ -45,7 +45,7 @@ Wait for registry in place:
         vname: AMIVersion
     - onchanges:
       - cmd: run_gen_config
-    {% if multithreading %}
+    {% if win_multithreading %}
     - parallel: True
     {% endif %}
 
@@ -61,7 +61,7 @@ Wait for file in place:
       - {{ TEMP }}\test.txt
     - onchanges:
       - cmd: run_gen_config
-    {% if multithreading %}
+    {% if win_multithreading %}
     - parallel: True
     {% endif %}
 
