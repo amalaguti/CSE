@@ -3,7 +3,7 @@
 {% set processor_cores = system_info['processor_cores'] %}
 {% set processors_logical = system_info['processors_logical'] %}
 {% set multithreading = False %} 
-{% if grains['os'] = 'Windows' and processor_logical > processor_cores %}
+{% if grains['os'] = 'Windows' AND (processor_logical > processor_cores) %}
 {% set multithreading = True %}
 {% endif %}
 
