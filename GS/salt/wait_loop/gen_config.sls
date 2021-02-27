@@ -33,7 +33,7 @@ run_gen_config:
 Wait for registry in place:
   loop.until_no_eval:
     - name: reg.read_value
-    - expected: 'vdata:2019.06.13'
+    - expected: 'vdata:2019.06.12'
     - compare_operator: data.subdict_match
     - period: 10
     - timeout: 120
