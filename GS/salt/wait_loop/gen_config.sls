@@ -1,7 +1,7 @@
 {#- Checking multithreading on Windows to make use of parallel: True -#}
 {% set system_info = salt['system.get_system_info']() %}
 {% set processor_cores = system_info['processor_cores'] %}
-{% set processors_logical = system_info['processors_logical'] %}
+{% set processor_logical = system_info['processors_logical'] %}
 
 
 {% set multithreading = False %} 
