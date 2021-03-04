@@ -5,4 +5,4 @@ show:
     - name: show
     - changes: False
     - result: True
-    - comment: show
+    - comment: {{ reg_info }}
