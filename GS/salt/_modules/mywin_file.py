@@ -1,5 +1,19 @@
 import win32api
 
+# Define the module's virtual name
+__virtualname__ = "mywin_file"
+
+
+def __virtual__():
+    """
+    Only works on Windows systems
+    """
+    if salt.utils.platform.is_windows():
+        return __virtualname__
+    else:
+        return (False, "only works on Windows")
+
+
 def getFileProperties(fname):
     """
     Read all properties of the given file return them as a dictionary.
