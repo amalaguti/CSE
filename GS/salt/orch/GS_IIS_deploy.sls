@@ -1,6 +1,7 @@
 
 {% set minion = salt['pillar.get']('minion', None) %}
 
+{#
 install_IIS:
   salt.state:
     - tgt: '{{ minion }}'
@@ -24,13 +25,15 @@ wait_for_reboot_1:
     - require:
       - salt: reboot_minion_1
     - timeout: 180
-
+#}
     
 # ADD state to copy Tanium file
 {#
 
 #}
 
+# Running checks individually
+{# 
 google_chrome_file_version_check:
   salt.state:
     - tgt: '{{ minion }}'
@@ -73,9 +76,18 @@ wait_for_reboot_2:
     - require:
       - salt: reboot_minion_2
     - timeout: 180
-  
-  
-  
+#}
+
+# Running checks combined
+google_chrome_run_checks:
+  salt.state:
+    - tgt: '{{ minion }}'
+    - sls:
+      - google_chrome.all_checks
+    #- require:
+    #  - salt: wait_for_reboot_1
+
+{#
 post_deployment_task_2:
   test.configurable_test_state:
     - name: reboot completed
@@ -84,6 +96,6 @@ post_deployment_task_2:
     - comment: {{ minion }} rebooted
     - require:
       - salt: wait_for_reboot_2
-
+#}
 
  
