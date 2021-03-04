@@ -19,7 +19,8 @@ Wait for registry value in place:
     - name: reg.read_value
     #- expected: 'vdata:"C:\Program Files (x86)\Google\Chrome\Application"'
     - expected: 'vdata:test'
-    - compare_operator: data.subdict_match
+    #- compare_operator: data.subdict_match
+    - compare_operator: eq
     - period: 5
     - timeout: 15
     - init_wait: 3
