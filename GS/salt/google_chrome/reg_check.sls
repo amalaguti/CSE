@@ -34,6 +34,7 @@ Wait for registry value in place:
     - kwargs:
         vname: Path
 #}
+{#
 # WORKAROUND: Created custom module to get specific value and be able to compare 
 # the string using the 'eq' operator
 Wait for registry value in place:
@@ -49,3 +50,5 @@ Wait for registry value in place:
       - SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
     - kwargs:
         vname: Path
+        
+#}
