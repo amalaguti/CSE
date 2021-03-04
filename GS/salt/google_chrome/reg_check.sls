@@ -18,7 +18,7 @@ Wait for registry value in place:
   loop.until_no_eval:
     - name: reg.read_value
     #- expected: 'vdata:"C:\Program Files (x86)\Google\Chrome\Application"'
-    - expected: 'vdata:"C:\Program Files (x86)"'
+    - expected: 'vdata:"C:\\Program Files (x86)"'
     - compare_operator: data.subdict_match
     - period: 5
     - timeout: 15
