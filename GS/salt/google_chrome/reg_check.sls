@@ -1,3 +1,4 @@
+{#
 Wait for registry key in place:
   loop.until_no_eval:
     - name: reg.key_exists
@@ -11,7 +12,7 @@ Wait for registry key in place:
       - SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
     - kwargs: {}
 
-
+#}
 
 # NOTE: this module is not ready to pass a different delimiter
 # required by data.subdict_match to match this value
@@ -19,11 +20,11 @@ Wait for registry key in place:
 # To update the module, pass delimiter argument to be used by data module
 # Line 214  cmp_res = comparator(res, expected, delimiter='|')
 # I have created issue https://github.com/saltstack/salt/issues/59701
-{#
+
 Wait for registry value in place:
   loop.until_no_eval:
     - name: reg.read_value
-    - expected: 'vdata:C:\Program Files (x86)\Google\Chrome\Application'
+    - expected: '\Program Files (x86)\Google\Chrome\Application'
     - compare_operator: data.subdict_match
     - period: 5
     - timeout: 15
@@ -33,7 +34,7 @@ Wait for registry value in place:
       - SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
     - kwargs:
         vname: Path
-#}
+
 {#
 # WORKAROUND: Created custom module to get specific value and be able to compare 
 # the string using the 'eq' operator
