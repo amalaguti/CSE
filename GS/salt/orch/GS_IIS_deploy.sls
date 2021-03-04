@@ -27,7 +27,7 @@ wait_for_reboot_1:
     - require:
       - salt: reboot_minion_1
     - timeout: 180
-#}
+
 
 # ADD state to copy Tanium file
 {#
