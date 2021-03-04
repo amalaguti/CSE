@@ -6,3 +6,15 @@ show:
     - changes: False
     - result: True
     - comment: {{ reg_info }}
+    
+    
+test.random_hash:
+  module.run:
+    - length: 10
+
+show_2:
+  test.configurable_test_state:
+    - name: show
+    - changes: False
+    - result: True
+    - comment: {{ reg_info }}
