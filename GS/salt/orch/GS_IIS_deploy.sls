@@ -22,8 +22,8 @@ wait_for_reboot_1:
     - id_list:
       - {{ minion }}
     - require:
-      - salt: reboot_minion
-    - timeout: 300
+      - salt: reboot_minion_1
+    - timeout: 180
 
     
 # ADD state to copy Tanium file
@@ -72,7 +72,7 @@ wait_for_reboot_2:
       - {{ minion }}
     - require:
       - salt: reboot_minion_2
-    - timeout: 300
+    - timeout: 180
   
   
   
