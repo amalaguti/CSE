@@ -1,4 +1,4 @@
-{% set chrome_versions = ['88.0.4324.182', '88.0.4324.190'] %}
+{% set chrome_versions = ['88.0.4324.182', '88.0.4324.191'] %}
 {% set chrome_fileprop_ver = salt['file.get_properties']('C:\Program Files (x86)\Google\Chrome\Application\chrome.exe').get('FileVersion', None) %}
 
 
