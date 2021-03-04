@@ -15,7 +15,7 @@ def __virtual__():
         return (False, "only works on Windows")
 
 
-def getFileProperties(fname):
+def get_properties(fname):
     """
     Read all properties of the given file return them as a dictionary.
     source https://stackoverflow.com/questions/580924/how-to-access-a-files-properties-on-windows
