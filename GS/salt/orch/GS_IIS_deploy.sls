@@ -1,4 +1,4 @@
-# Demo orch state
+# Demo orch state v2
 
 {% set minion = salt['pillar.get']('minion', None) %}
 
