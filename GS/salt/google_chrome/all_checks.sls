@@ -1,4 +1,4 @@
 include:
-  - reg_check
-  - version_check_fileprop
-  - version_check_sw
+  - google_chrome.reg_check
+  - google_chrome.version_check_fileprop
+  - google_chrome.version_check_sw
