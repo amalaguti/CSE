@@ -15,4 +15,4 @@ def __virtual__():
 
 
 def read_vdata(hive, key, vname=None, use_32bit_registry=False):
-    return __salt__['reg.read_value'](hive, key, vname, use_32bit_registry)
+    return __salt__['reg.read_value'](hive, key, vname, use_32bit_registry).get('vdata', None)
