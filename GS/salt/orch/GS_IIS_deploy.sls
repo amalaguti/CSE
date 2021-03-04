@@ -14,7 +14,7 @@ reboot_minion_1:
     - arg:
       - 1
     - require:
-      - salt: apply_win_fix_full
+      - salt: install_IIS
      
 wait_for_reboot_1:
   salt.wait_for_event:
