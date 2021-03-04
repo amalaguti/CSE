@@ -2,7 +2,7 @@ import win32api
 import salt.utils.platform
 
 # Define the module's virtual name
-__virtualname__ = "mywin_file"
+__virtualname__ = "file"
 
 
 def __virtual__():
