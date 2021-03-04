@@ -86,8 +86,8 @@ google_chrome_run_checks:
     - tgt: '{{ minion }}'
     - sls:
       - google_chrome.all_checks
-    #- require:
-    #  - salt: wait_for_reboot_1
+    - require:
+      - salt: wait_for_reboot_1
 
 {#
 post_deployment_task_2:
