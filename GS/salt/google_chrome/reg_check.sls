@@ -1,3 +1,4 @@
+{#
 Wait for registry key in place:
   loop.until_no_eval:
     - name: reg.key_exists
@@ -10,3 +11,19 @@ Wait for registry key in place:
       - HKLM
       - SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
     - kwargs: {}
+#}
+
+
+Wait for registry value in place:
+  loop.until_no_eval:
+    - name: reg.read_value
+    - expected: 'vdata:"C:\Program Files (x86)\Google\Chrome\Application"'
+    - compare_operator: data.subdict_match
+    - period: 5
+    - timeout: 15
+    - init_wait: 3
+    - args:
+      - HKLM
+      - SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
+    - kwargs:
+        vname: Path
