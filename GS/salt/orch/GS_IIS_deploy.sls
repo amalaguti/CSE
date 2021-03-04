@@ -89,13 +89,13 @@ google_chrome_run_checks:
     - require:
       - salt: wait_for_reboot_1
 
-{#
+
 post_deployment_task_2:
   test.configurable_test_state:
-    - name: reboot completed
+    - name: orch summary
     - result: True
     - changes: False
-    - comment: {{ minion }} rebooted
+    - comment: orch succeeded
     - require:
-      - salt: wait_for_reboot_2
-#}
+      - salt: google_chrome_run_checks
+
