@@ -15,7 +15,7 @@ reboot_minion_1:
     - name: system.reboot
     - tgt: '{{ minion }}'
     - arg:
-      - 0
+      - 1
     - require:
       - salt: install_IIS
 
@@ -65,7 +65,7 @@ reboot_minion_2:
     - name: system.reboot
     - tgt: '{{ minion }}'
     - arg:
-      - 0
+      - 1
     - require:
       - salt: google_chrome_file_version_check
       - salt: google_chrome_sw_version_check
