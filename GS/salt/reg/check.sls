@@ -8,7 +8,7 @@ show:
     - comment: {{ reg_info }}
     
     
-test.random_hash:
+test.sleep:
   module.run:
     - length: 10
 
