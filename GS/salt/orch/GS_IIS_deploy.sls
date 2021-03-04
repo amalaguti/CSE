@@ -1,3 +1,4 @@
+# Demo orch state
 
 {% set minion = salt['pillar.get']('minion', None) %}
 
@@ -7,7 +8,7 @@ install_IIS:
     - tgt: '{{ minion }}'
     - sls:
       - do_something.apply_win_fix_full
-        
+
 reboot_minion_1:
   salt.function:
     - name: system.reboot
@@ -16,7 +17,7 @@ reboot_minion_1:
       - 0
     - require:
       - salt: install_IIS
-     
+
 wait_for_reboot_1:
   salt.wait_for_event:
     - name: salt/minion/*/start
@@ -26,14 +27,14 @@ wait_for_reboot_1:
       - salt: reboot_minion_1
     - timeout: 180
 #}
-    
+
 # ADD state to copy Tanium file
 {#
 
 #}
 
 # Running checks individually
-{# 
+{#
 google_chrome_file_version_check:
   salt.state:
     - tgt: '{{ minion }}'
@@ -41,7 +42,7 @@ google_chrome_file_version_check:
       - google_chrome.version_check_fileprop
     - require:
       - salt: wait_for_reboot_1
-      
+
 google_chrome_sw_version_check:
   salt.state:
     - tgt: '{{ minion }}'
@@ -49,7 +50,7 @@ google_chrome_sw_version_check:
       - google_chrome.version_check_sw
     - require:
       - salt: wait_for_reboot_1
-      
+
 google_chrome_reg_check:
   salt.state:
     - tgt: '{{ minion }}'
@@ -65,9 +66,9 @@ reboot_minion_2:
     - arg:
       - 0
     - require:
-      - salt: google_chrome_file_version_check  
+      - salt: google_chrome_file_version_check
       - salt: google_chrome_sw_version_check
-      - salt: google_chrome_reg_check 
+      - salt: google_chrome_reg_check
 wait_for_reboot_2:
   salt.wait_for_event:
     - name: salt/minion/*/start
@@ -97,5 +98,3 @@ post_deployment_task_2:
     - require:
       - salt: wait_for_reboot_2
 #}
-
- 
