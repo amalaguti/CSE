@@ -1,4 +1,3 @@
-{#
 Wait for registry key in place:
   loop.until_no_eval:
     - name: reg.key_exists
@@ -11,7 +10,7 @@ Wait for registry key in place:
       - HKLM
       - SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
     - kwargs: {}
-#}
+
 
 
 # NOTE: this module is not ready to pass a different delimiter
