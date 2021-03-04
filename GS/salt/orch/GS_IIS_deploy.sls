@@ -2,12 +2,13 @@
 
 {% set minion = salt['pillar.get']('minion', None) %}
 
-{#
 install_IIS:
   salt.state:
     - tgt: '{{ minion }}'
     - sls:
       - do_something.apply_win_fix_full
+    - failhard: True
+
 
 reboot_minion_1:
   salt.function:
