@@ -28,4 +28,4 @@ Wait for registry value in place:
       - SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
     - kwargs:
         vname: Path2
-    - delimiter: '|'
+
