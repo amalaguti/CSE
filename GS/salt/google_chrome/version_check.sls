@@ -4,5 +4,9 @@
 
 
 {% if chrome_sw_ver in chrome_versions %}
-chrome_version_found:
+chrome_version:
   test.succeed_without_changes
+{% else %}
+chrome_version:
+  test.fail_without_changes
+{% endif %}
