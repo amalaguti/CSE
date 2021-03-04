@@ -8,5 +8,5 @@ Wait for registry key in place:
     - init_wait: 5
     - args:
       - HKLM
-      - SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
+      - SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome2.exe
     - kwargs: {}
