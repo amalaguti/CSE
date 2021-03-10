@@ -1,0 +1,5 @@
+db:
+  name: ABC
+  env: prod
+  pro_code: 54321
+  common_code: this is prod
