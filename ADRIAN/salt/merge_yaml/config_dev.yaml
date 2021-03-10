@@ -1,0 +1,5 @@
+db:
+  name: ABC
+  env: dev
+  dev_code: 12345
+  common_code: this is dev 
