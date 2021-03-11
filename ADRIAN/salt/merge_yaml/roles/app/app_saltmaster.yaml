@@ -3,7 +3,13 @@ app:
   port: 443
   path: /opt/app
   config_name: app-saltmaster
-  comment: saltmaster custom config
+  comment: host config
   enable_firewall: True
-prod:
-  name: AppLive
+  token: {{ salt['pillar.get']('ad_pwd', None) }}
+
+user:
+  name: svc_appuser
+  disable: False
+
+banner:
+  name: App is Live

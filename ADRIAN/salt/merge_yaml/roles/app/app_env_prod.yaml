@@ -1,3 +1,7 @@
 app:
   name: COOL_APP
   url: https://{{ grains['fqdn'] }}
+
+user:
+  name: app_user
+  disable: False

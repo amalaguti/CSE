@@ -1,3 +1,5 @@
+{% set show_data_only = salt['pillar.get']('show_data_only', False) %}
+
 # Settings defaults
 # 1 - Default settings (general)
 {% set app_default = None %}
@@ -82,3 +84,19 @@ show_loaded_config_data:
 
 
 # Application config loaded - ready to start configuration
+
+{% if show_data_only %}
+showing_data_only:
+  test.configurable_test_state:
+    - name: Showing data only
+    - changes: False
+    - result: True
+    - comment: Check data loaded
+{% elif not show_data_only %}
+appying_role:
+  test.configurable_test_state:
+    - name: Applying role
+    - changes: True
+    - result: True
+    - comment: Let's get it done
+{% endif %}
