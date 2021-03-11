@@ -1,0 +1,3 @@
+app:
+  name: COOL_APP
+  url: https://{{ grains['fqdn'] }}

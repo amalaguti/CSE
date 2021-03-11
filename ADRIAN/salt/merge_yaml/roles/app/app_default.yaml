@@ -1,0 +1,6 @@
+app:
+  name: myapp_default
+  port: 8000
+  path: /tmp/app
+  config_name: default
+  url: http://localhost

@@ -1,0 +1,9 @@
+app:
+  name: myapp_saltmaster
+  port: 443
+  path: /opt/app
+  config_name: app-saltmaster
+  comment: saltmaster custom config
+  enable_firewall: True
+prod:
+  name: AppLive

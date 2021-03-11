@@ -1,0 +1,9 @@
+app:
+  port: 8080
+  path: /usr/local/app
+  config_name: app-RedHat
+  comment: RedHat standard config
+  url: http://{{ grains['ipv4'][0] }}
+
+app_bkp:
+  name: myapp_bkp
