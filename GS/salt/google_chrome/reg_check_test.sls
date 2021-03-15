@@ -1,10 +1,10 @@
 Wait for registry value in place:
   loop.until_no_eval:
     - name: reg.read_value
-    - expected: "vdata:test"
+    - expected: "vdata:test2"
     - compare_operator: data.subdict_match
     - period: 3
-    - timeout: 15
+    - timeout: 3
     - init_wait: 1
     - args:
       - HKLM
