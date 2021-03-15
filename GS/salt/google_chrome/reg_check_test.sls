@@ -1,7 +1,7 @@
 Wait for registry value in place:
   loop.until_no_eval:
     - name: reg.read_vdata
-    - expected: 'C:\Program Files (x86)\Google\Chrome\Application'
+    - expected: 'D:\Program Files (x86)\Google\Chrome\Application'
     - compare_operator: eq
     - period: 5
     - timeout: 15
