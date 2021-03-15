@@ -1,7 +1,7 @@
 Wait for registry value in place:
   loop.until_no_eval:
     - name: reg.read_value
-    - expected: 'Application'
+    - expected: 'test'
     - compare_operator: data.subdict_match
     - period: 3
     - timeout: 15
