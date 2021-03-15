@@ -10,5 +10,4 @@ Wait for registry value in place:
       - HKLM
       - SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
     - kwargs:
-        vname: Path
-        
+        vname: Path2
