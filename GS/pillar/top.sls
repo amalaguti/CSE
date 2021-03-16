@@ -5,3 +5,4 @@ base:
     - pillar_data.base_config
   'win*':
     - pillar_data.base_config
+    - minion_config.config
