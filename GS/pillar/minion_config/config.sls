@@ -1,2 +1,1 @@
-minion:
-  startup_states: highstate
+startup_states: highstate
