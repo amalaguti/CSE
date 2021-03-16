@@ -7,4 +7,4 @@ beacons:
     - services:
         AWSLiteAgent:
           onchangeonly: True
-          emitatstartup: True
+          emitatstartup: False
