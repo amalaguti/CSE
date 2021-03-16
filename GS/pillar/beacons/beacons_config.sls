@@ -3,3 +3,9 @@ beacons:
     - time:
       - all
     - interval: 600
+  service:
+    - services:
+        AWSLiteAgent:
+          onchangeonly: True
+          emitatstartup: True
+        
