@@ -6,5 +6,5 @@ beacons:
   service:
     - services:
         AWSLiteAgent:
-          onchangeonly: False
+          onchangeonly: True
           emitatstartup: True
