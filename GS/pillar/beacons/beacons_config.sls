@@ -9,5 +9,7 @@ beacons:
         AWSLiteAgent:
           onchangeonly: True
           emitatstartup: False
-
+  diskusage:
+    -  interval: 5
+    - 'c:\\': 10%
 
