@@ -9,5 +9,3 @@ beacons:
         AWSLiteAgent:
           onchangeonly: False
           emitatstartup: True
-         
-        
