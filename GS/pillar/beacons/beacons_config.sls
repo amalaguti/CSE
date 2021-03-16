@@ -4,8 +4,7 @@ beacons:
       - all
     - interval: 600
   service:
-    - interval: 5
     - services:
         AWSLiteAgent:
-          onchangeonly: True
+          onchangeonly: False
           emitatstartup: True
