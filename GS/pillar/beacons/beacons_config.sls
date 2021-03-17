@@ -13,9 +13,9 @@ beacons:
     -  interval: 3600
     - 'c:\\': 90%
   watchdog:
-    - interval: 10
+    - interval: 3
     - directories:
-        'C:\info.txt':
+        'C:\info':
           mask:
             - create
             - modify
