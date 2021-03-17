@@ -4,12 +4,12 @@ beacons:
       - all
     - interval: 600
   service:
-    - interval: 60
+    - interval: 600
     - services:
         AWSLiteAgent:
           onchangeonly: True
           emitatstartup: False
   diskusage:
-    -  interval: 5
-    - 'c:\\': 10%
+    -  interval: 3600
+    - 'c:\\': 90%
 
