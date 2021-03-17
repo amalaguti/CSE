@@ -17,3 +17,4 @@ install_watchdog:
     #- log: 'C:\watchdog\watchdog.log'
     - unless:
       - 'C:\salt\bin\Scripts\pip.exe show watchdog'
+      
