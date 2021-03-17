@@ -15,6 +15,12 @@ beacons:
   watchdog:
     - interval: 10
     - directories:
+        'C:\info.txt':
+          mask:
+            - create
+            - modify
+            - delete
+            - move
         'C:\watchdog':
           mask:
             - create
