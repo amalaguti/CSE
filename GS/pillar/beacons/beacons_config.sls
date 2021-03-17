@@ -13,7 +13,6 @@ beacons:
     -  interval: 3600
     - 'c:\\': 90%
   watchdog:
-    - interval: 5
     - directories:
         'C:\info':
           mask:
