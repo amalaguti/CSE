@@ -4,6 +4,5 @@ install_watchdog:
     - cwd: 'C:\salt\bin\scripts'
     - bin_env: 'C:\salt\bin\scripts\pip.exe'
     - upgrade: True
-    - disable_version_check: True
     - no_index: True
     - log: 'C:\watchdog'
