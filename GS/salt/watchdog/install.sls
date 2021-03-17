@@ -5,4 +5,4 @@ install_watchdog:
     - bin_env: 'C:\salt\bin\scripts\pip.exe'
     - upgrade: True
     - no_index: True
-    - log: 'C:\watchdog\watchdog.log'
+    #- log: 'C:\watchdog\watchdog.log'
