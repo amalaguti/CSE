@@ -15,5 +15,5 @@ install_watchdog:
     - no_index: True
     - find_links: 'C:\salt\bin\Scripts'
     #- log: 'C:\watchdog\watchdog.log'
-    - unless:
-      - 'C:\salt\bin\Scripts\pip.exe show watchdog'
+    #- unless:
+    #  - 'C:\salt\bin\Scripts\pip.exe show watchdog'
