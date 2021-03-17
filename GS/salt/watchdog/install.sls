@@ -12,8 +12,8 @@ install_watchdog:
     - cwd: 'C:\salt\bin\Scripts'
     - bin_env: 'C:\salt\bin\Scripts\pip.exe'
     - upgrade: True
-    - no_index: True
-    - find_links: 'C:\salt\bin\Scripts'
+    #- no_index: True
+    #- find_links: 'C:\salt\bin\Scripts'
     #- log: 'C:\watchdog\watchdog.log'
     - unless:
       - 'C:\salt\bin\Scripts\pip.exe show watchdog'
