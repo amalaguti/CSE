@@ -27,3 +27,8 @@ beacons:
             - modify
             - delete
             - move
+           
+  registry:
+    - keys:
+        salt-master: {}
+        mysql: {}
