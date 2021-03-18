@@ -7,6 +7,7 @@ copy_local_file:
 install_watchdog:
   pip.installed:
     - name: 'watchdog-2.0.2-py3-none-win_amd64.whl'
+    - reload_modules: True
     #- pkgs: 
     #  - 'watchdog-2.0.2-py3-none-win_amd64.whl'
     - cwd: 'C:\salt\bin\Scripts'
