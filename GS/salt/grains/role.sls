@@ -22,7 +22,7 @@ grain_role:
     - force: True
     - value: 
       - 'Chromer'
-    {% endf %}  
+    {% endif %}  
     {% endif %}
  
  {% endfor %}
