@@ -11,7 +11,7 @@ show:
     - name: show
     - changes: False
     - result: True
-    - comments: |
+    - comment: |
         {{ grains['win_pkgs'] }}
 {% endif %}
 {% endif %}
