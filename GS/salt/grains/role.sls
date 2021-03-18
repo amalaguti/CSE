@@ -1,8 +1,8 @@
 {% if grains['os'] == 'Windows' %}
 {% for pkg in grains['win_pkgs'] %}
-show_{{ loop.counter }}:
+show_{{ loop.index }}:
   test.configurable_test_state:
-    - name: show {{ loop.counter }}
+    - name: show {{ loop.index }}
     - changes: False
     - result: True
     - comment: |
