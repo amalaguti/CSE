@@ -3,7 +3,7 @@
 
 services_info = {}
 {% for service in services_all %}
-{% set service_info = salt['service.get_info'](service) %}
+{% set service_info = salt['service.info'](service) %}
 {% do services_info.update(service_info) %}
 {% endfor %}
 
