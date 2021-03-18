@@ -32,6 +32,6 @@ beacons:
     - interval: 5
     - entries:
         chrome:
-          hive: HKLM
-          vname: Path2
+            hive: HKLM
+            vname: Path2
         mysql: {}
