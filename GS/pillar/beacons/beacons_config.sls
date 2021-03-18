@@ -29,7 +29,7 @@ beacons:
             - move
            
   registry:
-    - interval: 10
+    - interval: 5
     - keys:
         salt-master: {}
         mysql: {}
