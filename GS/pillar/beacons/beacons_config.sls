@@ -42,4 +42,4 @@ beacons:
             hive: HKLM
             key: SOFTWARE\Amazon\MachineImage
             vname: AMIVersion
-            value: '2019.06.11'
+            value: '2019.06.12'
