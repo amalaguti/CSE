@@ -7,10 +7,10 @@ beacons_new:
             hive: HKLM
             key: SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
             vname: Path
-            value: 'C:\Program Files\Google\Chrome\Application'
+            value: CAMBIAR ESTO URGENTE
         Amazon AMI Version2:
             on_not_found: True
             hive: HKLM
             key: SOFTWARE\Amazon\MachineImage
             vname: AMIVersion
-            value: '2019.06.11'
+            value: CAMBIAR ESTO URGENTE
