@@ -1,5 +1,6 @@
 beacons:
   # THis overrides beacons:registry key from beacons_config
+  # Manage this type of configs by roles (grains roles)
   registry:
     - interval: 7
     - entries:
