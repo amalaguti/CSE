@@ -10,8 +10,8 @@ beacons:
           onchangeonly: True
           emitatstartup: False
   diskusage:
-    -  interval: 3600
-    - 'c:\\': 90%
+    -  interval: 20
+    - 'c:\\': 10%
   watchdog:
     #- interval: 20
     - directories:
@@ -29,6 +29,7 @@ beacons:
             - move
            
   registry:
+    - interval: 10
     - keys:
         salt-master: {}
         mysql: {}
