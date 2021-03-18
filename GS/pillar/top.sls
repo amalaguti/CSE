@@ -1,10 +1,11 @@
 base:
-  '*':
-    - beacons.beacons_config
+  #'*':
    
   'multimaster*':
     - pillar_data.base_config
   'win*':
+      #- minion_config.config
     - pillar_data.base_config
     - beacons.beacons_registry
-    #- minion_config.config
+    - beacons.beacons_config
+
