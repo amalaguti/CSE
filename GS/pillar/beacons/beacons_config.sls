@@ -35,9 +35,11 @@ beacons:
             on_not_found: True
             hive: HKLM
             key: SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
-            vname: Path2
+            vname: Path
+            value: blah
         Amazon AMI Version:
             on_not_found: True
             hive: HKLM
             key: SOFTWARE\Amazon\MachineImage
-            vname: AMIVersion2
+            vname: AMIVersion
+            value: '2019.06.11'
