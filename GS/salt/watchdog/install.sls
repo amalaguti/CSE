@@ -35,6 +35,6 @@ do_reload_modules:
     - changes: False
     - result: True
     - comment: |
-        {{ is_watchdog }}
+        {{ pip_freeze }}
         {{ watchdog_installed }}
     - reload_modules: True
