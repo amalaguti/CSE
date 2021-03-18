@@ -1,4 +1,4 @@
-beacons_new:
+beacons:
   registry:
     - interval: 5
     - entries:
