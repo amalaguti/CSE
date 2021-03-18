@@ -38,4 +38,4 @@ beacons:
         Amazon AMI Version:
             hive: HKLM
             key: SOFTWARE\Amazon\MachineImage
-            vname: AMIVersion
+            vname: AMIVersion2
