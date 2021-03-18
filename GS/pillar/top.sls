@@ -7,5 +7,7 @@ base:
       #- minion_config.config
     - pillar_data.base_config
     - beacons.beacons_config
+  'windowsdomain:CRACK':
+    - match: grain
     - beacons.beacons_registry
 
