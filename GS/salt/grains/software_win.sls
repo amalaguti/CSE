@@ -8,6 +8,9 @@ show:
     - result: True
     - comment: |
         {{ packages }}
+        {% for name, version in packages.items() %}
+        {{ name }} {{ version }}
+        {% endfor %}
 {#
 grain_win_pkgs:
   grains.present:
