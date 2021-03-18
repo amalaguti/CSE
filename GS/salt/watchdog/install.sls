@@ -1,5 +1,5 @@
 #https://github.com/saltstack/salt/issues/58982
-{% set is_watchdog = salt['pip.freeze']('cwd="C:\salt\bin\Scripts"', 'bin_env="C:\salt\bin\Scripts\pip.exe"') %}
+{% set is_watchdog = salt['pip.freeze']('cwd="C:\\salt\\bin\\Scripts"', 'bin_env="C:\\salt\\bin\\Scripts\\pip.exe"') %}
 
 
 copy_local_file:
