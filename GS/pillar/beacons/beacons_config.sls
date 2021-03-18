@@ -33,5 +33,6 @@ beacons:
     - entries:
         chrome:
             hive: HKLM
+            key: "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe"
             vname: Path2
         mysql: {}
