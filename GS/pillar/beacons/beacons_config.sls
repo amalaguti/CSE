@@ -34,4 +34,5 @@ beacons:
         chrome:
             hive: HKLM
             vname: Path3
+            key: mystring
         mysql: {}
