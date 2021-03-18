@@ -4,7 +4,7 @@
 {% set services_info = {} %}
 {% for service in services_all %}
 {% set service_info = salt['service.info'](service) %}
-{% do services_info[service] = {'a': 1} %}
+{% do services_info['bha'] = {'a': 1} %}
 {% endfor %}
 
 show:
