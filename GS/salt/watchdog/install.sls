@@ -15,15 +15,10 @@ copy_local_file:
 install_watchdog:
   pip.installed:
     - name: 'watchdog-2.0.2-py3-none-win_amd64.whl'
-    - reload_modules: True
-    #- pkgs: 
-    #  - 'watchdog-2.0.2-py3-none-win_amd64.whl'
+    - reload_modules: True  # Not working - documented issue as of March 2021
     - cwd: 'C:\salt\bin\Scripts'
     - bin_env: 'C:\salt\bin\Scripts\pip.exe'
     - upgrade: True
-    #- no_index: True
-    #- find_links: 'C:\salt\bin\Scripts'
-    #- log: 'C:\watchdog\watchdog.log'
     - unless:
       - 'C:\salt\bin\Scripts\pip.exe show watchdog'
 #restart_minion:
@@ -41,4 +36,3 @@ do_reload_modules:
     - comment: |
         {{ pip_freeze }}
         {{ watchdog_installed }}
-    - reload_modules: True
