@@ -12,6 +12,6 @@ show:
     - changes: False
     - result: True
     - comment: |
-        {{ grains['win_pkgs'] }}
+        {{ grains['win_pkgs'].keys() }}
 {% endif %}
 {% endif %}
