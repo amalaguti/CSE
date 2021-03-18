@@ -1,3 +1,10 @@
+# State module to install pip module watchdog under Salt python environment
+# Deals with a few pip module related issues
+# Requires salt-minion restart to reload module
+# Also sets custom grain 
+# This module can be used by highstate 
+# Minions running highstate on start, will install the mdoule, restart, run highstate and continue
+
 #https://github.com/saltstack/salt/issues/58982
 {% set watchdog_installed = False %}
 {% set watchdog_ver = 'watchdog @ file:///C:/salt/bin/Scripts/watchdog-2.0.2-py3-none-win_amd64.whl' %}
