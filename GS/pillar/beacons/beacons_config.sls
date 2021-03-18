@@ -31,5 +31,8 @@ beacons:
   registry:
     - interval: 5
     - entries:
-        salt-master: {}
+        chrome:
+          hive: HKLM
+          key: "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe"
+          vname: Path2
         mysql: {}
