@@ -7,6 +7,8 @@
 {% do services_info.update({service: {
   'DisplayName': service_info['DisplayName'],
   'Status': service_info['Status'],
+  'StartType': service_info['StartType'],
+  'ServiceAccount': service_info['ServiceAccount'],
   'BinaryPath': service_info['BinaryPath']}}) %}
 {% endfor %}
 
