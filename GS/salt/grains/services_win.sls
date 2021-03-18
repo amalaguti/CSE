@@ -4,7 +4,7 @@
 {% set services_info = {} %}
 {% for service in services_all %}
 {% set service_info = salt['service.info'](service) %}
-{% do services_info.update({service: service_info}) %}
+{% do services_info.update({service: {'BinaryPath': service_info['BinaryPath']}}) %}
 {% endfor %}
 
 show:
