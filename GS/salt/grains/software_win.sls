@@ -1,4 +1,4 @@
-{% if grains['os'] == 'Windows %}
+{% if grains['os'] == 'Windows' %}
 {% set packages = salt['pkg.list_pkgs']() %}
 
 grain_win_pkgs:
