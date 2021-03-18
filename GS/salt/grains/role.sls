@@ -13,14 +13,18 @@ show_{{outloop}}{{ loop.index }}:
     - comment: |
         {{ pkg }} {{ version }}
 #}
+
     {% if pkg == 'Google Chrome' %}
+    {% if 'roles' in grains and grains['roles']|is_list %}
 grain_role:
   grains.present:
-    - name: role
+    - name: roles
     - force: True
     - value: 
       - 'Chromer'
+    {% endf %}  
     {% endif %}
-  {% endfor %}
+ 
+ {% endfor %}
 {% endfor %}
 {% endif %}
