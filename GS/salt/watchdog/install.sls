@@ -26,7 +26,11 @@ install_watchdog:
     #- log: 'C:\watchdog\watchdog.log'
     - unless:
       - 'C:\salt\bin\Scripts\pip.exe show watchdog'
-      
+#restart_minion:
+#  module.run:
+#    - cmd.run_bg:
+#      - cmd: 'salt-call --local service.restart salt-minion'
+
 
 
 do_reload_modules:
