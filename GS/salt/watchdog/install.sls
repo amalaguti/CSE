@@ -1,5 +1,11 @@
 #https://github.com/saltstack/salt/issues/58982
-{% set is_watchdog = salt['pip.freeze']() %}
+{% set watchdog_installed = False %}
+{% set watchdog_ver = 'watchdog @ file:///C:/salt/bin/Scripts/watchdog-2.0.2-py3-none-win_amd64.whl' %}
+{% set pip_freeze = salt['pip.freeze']() %}
+{% if watchdog_ver in pip_freeze %}
+{% set watchdog_installed = True %}
+{% endif %}
+
 #'cwd="C:\\salt\\bin\\Scripts"', 'bin_env="C:\\salt\\bin\\Scripts\\pip.exe"'
 
 copy_local_file:
@@ -30,4 +36,5 @@ do_reload_modules:
     - result: True
     - comment: |
         {{ is_watchdog }}
+        {{ watchdog_installed }}
     - reload_modules: True
