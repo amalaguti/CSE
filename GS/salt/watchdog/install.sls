@@ -7,7 +7,7 @@
 {% endif %}
 
 {% if not watchdog_installed %}
-salt_modules_grain:
+salt_modules_grain_watchdog_false:
   grains.present:
     - name: salt_modules:watchdog
     - value:
@@ -49,7 +49,7 @@ watchdog_loaded:
     - result: True
     - comment: watchdog module is already loaded
     
-salt_modules_grain:
+salt_modules_grain_watchdog_true:
   grains.present:
     - name: salt_modules:watchdog
     - value:
