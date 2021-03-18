@@ -33,7 +33,7 @@ beacons:
     - entries:
         chrome:
             hive: HKLM
-            key: mystring1
+            key: "SOFTWARE\"
             vname: Path2
 
         mysql: {}
