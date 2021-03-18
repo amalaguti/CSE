@@ -7,6 +7,12 @@
 {% endif %}
 
 {% if not watchdog_installed %}
+salt_modules_grain:
+  grains.present:
+    - name: salt_modules:watchdog
+    - value:
+      - installed: False
+      - version: watchdog-2.0.2
 watchdog_not_loaded:
   test.configurable_test_state:
     - name: watchdog not loaded
@@ -22,7 +28,7 @@ copy_local_file:
 install_watchdog:
   pip.installed:
     - name: 'watchdog-2.0.2-py3-none-win_amd64.whl'
-    - reload_modules: True  # Not working - documented issue as of March 2021
+    - reload_modules: True  # Not working - documented issue as of March 2021, https://github.com/saltstack/salt/issues/24925
     - cwd: 'C:\salt\bin\Scripts'
     - bin_env: 'C:\salt\bin\Scripts\pip.exe'
     - upgrade: True
@@ -42,3 +48,10 @@ watchdog_loaded:
     - changes: False
     - result: True
     - comment: watchdog module is already loaded
+    
+salt_modules_grain:
+  grains.present:
+    - name: salt_modules:watchdog
+    - value:
+      - installed: True
+      - version: watchdog-2.0.2
