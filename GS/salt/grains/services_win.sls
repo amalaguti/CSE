@@ -19,14 +19,13 @@ show:
    - result: True
    - comment: |
        {{ services_info }}
-{#
+
 grain_win_pkgs:
   grains.present:
-    - name: win_pkgs
+    - name: win_services
     - force: True
     - value:   
-        {% for name, version in packages.items() %}
-        - {{ name }}: {{ version }}
+        {% for service, service_info in services_info.items() %}
+        - {{ service }}: {{ service_info }}
         {% endfor %}
-#}
 {% endif %}
