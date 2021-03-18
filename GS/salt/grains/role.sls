@@ -16,12 +16,13 @@ show_{{outloop}}{{ loop.index }}:
 
     {% if pkg == 'Google Chrome' %}
     {% if 'roles' in grains and grains['roles']|is_list %}
+    {% set roles = grains['roles'] %}
+    {% do roles.append('Chromer') %}
 grain_role:
   grains.present:
     - name: roles
     - force: True
-    - value: 
-      - 'Chromer'
+    - value: {{ roles }}  
     {% endif %}  
     {% endif %}
  
