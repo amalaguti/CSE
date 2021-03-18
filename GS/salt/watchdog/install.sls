@@ -10,9 +10,17 @@
 salt_modules_grain_watchdog_false:
   grains.present:
     - name: salt_modules:watchdog
+    - force: True
     - value:
       - installed: False
       - version: watchdog-2.0.2
+salt_modules_grain_watchdog2_false:
+  grains.present:
+    - name: salt_modules:watchdog2
+    - force: True
+    - value:
+      - installed: xxxxx
+      - version: xxxxx
 watchdog_not_loaded:
   test.configurable_test_state:
     - name: watchdog not loaded
@@ -39,9 +47,7 @@ restart_minion:
   module.run:
     - name: cmd.run_bg
     - cmd: 'c:\salt\salt-call.bat --local service.restart salt-minion'
-{% endif %}
-
-
+{% else %}
 watchdog_loaded:
   test.configurable_test_state:
     - name: watchdog loaded
@@ -52,6 +58,8 @@ watchdog_loaded:
 salt_modules_grain_watchdog_true:
   grains.present:
     - name: salt_modules:watchdog
+    - force: True
     - value:
       - installed: True
       - version: watchdog-2.0.2
+{% endif %}
