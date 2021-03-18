@@ -14,4 +14,4 @@ beacons:
             hive: HKLM
             key: SOFTWARE\Amazon\MachineImage
             vname: AMIVersion
-            value: CAMBIAR ESTO URGENTE 2
+            value: CAMBIAR ESTO URGENTE 3
