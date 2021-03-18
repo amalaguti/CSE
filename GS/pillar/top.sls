@@ -10,7 +10,7 @@ base:
     
   # Custom grain created by grains.software_win 
   #'win_pkgs:Google Chrome:*':
-  'roles:Chromer'
+  'roles:Chromer':
     - match: grain
     - beacons.beacons_registry
 
