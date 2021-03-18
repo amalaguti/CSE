@@ -1,7 +1,7 @@
 {% if grains['os'] == 'Windows' %}
 {% set services_all = salt['service.get_all']() %}
 
-services_info = {}
+{% set services_info = {} %}
 {% for service in services_all %}
 {% set service_info = salt['service.info'](service) %}
 {% do services_info.update(service_info) %}
