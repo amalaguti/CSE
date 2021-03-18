@@ -5,5 +5,12 @@ grain_role:
     - name: role
     - force: True
     - value: 'Chromer'
-{% endif %}
+{% else %}
+show:
+  test.configurable_test_state:
+    - name: show
+    - changes: False
+    - result: True
+    - comments: |
+        {{ grains['win_pkgs'] }}
 {% endif %}
