@@ -1,3 +1,4 @@
+beacons:  
   registry:
     - interval: 5
     - entries:
