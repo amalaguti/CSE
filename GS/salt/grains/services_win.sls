@@ -12,14 +12,6 @@
   'BinaryPath': service_info['BinaryPath']}}) %}
 {% endfor %}
 
-show:
- test.configurable_test_state:
-   - name: show
-   - changes: False
-   - result: True
-   - comment: |
-       {{ services_info }}
-
 grain_win_pkgs:
   grains.present:
     - name: win_services
