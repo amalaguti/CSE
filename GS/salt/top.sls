@@ -6,6 +6,9 @@ base:
   'config_data:env:MASTER*':
     - match: pillar
     - highstates.machine_info
+  
+  'win*':
+    - watchdog.install
     
 dev:  
   'multimaster*':
