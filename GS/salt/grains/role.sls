@@ -15,7 +15,9 @@ show_{{outloop}}{{ loop.index }}:
 grain_role:
   grains.present:
     - name: role
-    - value: 'Chromer'
+    - force: True
+    - value: 
+      -'Chromer'
     {% endif %}
   {% endfor %}
 {% endfor %}
