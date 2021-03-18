@@ -4,25 +4,25 @@
   {% set outloop = loop.index %}
   
   {% for pkg, version in pkg_info.items() %}
-{#
-show_{{outloop}}{{ loop.index }}:
-  test.configurable_test_state:
-    - name: show {{outloop}}{{ loop.index }}
-    - changes: False
-    - result: True
-    - comment: |
-        {{ pkg }} {{ version }}
-#}
 
     {% if pkg == 'Google Chrome' %}
     {% if 'roles' in grains and grains['roles']|is_list %}
     {% set roles = grains['roles'] %}
+    {% if 'Chromer' not in roles %}
     {% do roles.append('Chromer') %}
 grain_role:
   grains.present:
     - name: roles
     - force: True
-    - value: {{ roles }}  
+    - value: {{ roles }}
+    {% endif %}
+    {% else %}
+grain_role:
+  grains.present:
+    - name: roles
+    - force: True
+    - value: 
+      - 'Chromer' 
     {% endif %}  
     {% endif %}
  
