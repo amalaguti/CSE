@@ -41,6 +41,4 @@ watchdog_loaded:
     - name: watchdog loaded
     - changes: False
     - result: True
-    - comment: |
-        {{ pip_freeze }}
-        {{ watchdog_installed }}
+    - comment: watchdog module is already loaded
