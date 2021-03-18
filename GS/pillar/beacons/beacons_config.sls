@@ -30,6 +30,6 @@ beacons:
            
   registry:
     - interval: 5
-    - keys:
+    - entries:
         salt-master: {}
         mysql: {}
