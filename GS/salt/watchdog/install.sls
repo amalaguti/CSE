@@ -28,13 +28,13 @@ install_watchdog:
     - upgrade: True
     - unless:
       - 'C:\salt\bin\Scripts\pip.exe show watchdog'
-{% endif %}
-
-
+      
 restart_minion:
   module.run:
     - name: cmd.run_bg
     - cmd: 'c:\salt\salt-call.bat --local service.restart salt-minion'
+{% endif %}
+
 
 watchdog_loaded:
   test.configurable_test_state:
