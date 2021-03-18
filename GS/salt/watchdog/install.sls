@@ -34,7 +34,7 @@ install_watchdog:
 restart_minion:
   module.run:
     - name: cmd.run_bg
-    - cmd: 'salt-call --local service.restart salt-minion'
+    - cmd: 'c:\salt\salt-call.bat --local service.restart salt-minion'
 
 watchdog_loaded:
   test.configurable_test_state:
