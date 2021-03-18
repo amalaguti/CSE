@@ -8,15 +8,13 @@ show:
     - result: True
     - comment: |
         {{ packages }}
-        {% for name, version in packages.items() %}
-        {{ name }} {{ version }}
-        {% endfor %}
-{#
+
 grain_win_pkgs:
   grains.present:
     - name: win_pkgs
     - force: True
-    - value:
-        - {{ packages }}
-#}
+    - value:   
+        {% for name, version in packages.items() %}
+        - {{ name }}: {{ version }}
+        {% endfor %}
 {% endif %}
