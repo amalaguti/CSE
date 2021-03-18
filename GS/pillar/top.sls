@@ -8,7 +8,7 @@ base:
     - pillar_data.base_config
     - beacons.beacons_config
     
-  # Custom grain created by 
+  # Custom grain created by grains.software_win 
   'win_pkgs:Google Chrome:*':
     - match: grain
     - beacons.beacons_registry
