@@ -6,12 +6,19 @@
 {% set watchdog_installed = True %}
 {% endif %}
 
-#'cwd="C:\\salt\\bin\\Scripts"', 'bin_env="C:\\salt\\bin\\Scripts\\pip.exe"'
-
+{% if not watchdog_installed %}
+watchdog_not_loaded:
+  test.configurable_test_state:
+    - name: watchdog not loaded
+    - changes: False
+    - result: False
+    - comment: watchdog not loaded, state will install it and restart salt-minion to load module
+    
 copy_local_file:
   file.managed:
     - name: 'C:\salt\bin\Scripts\watchdog-2.0.2-py3-none-win_amd64.whl'
     - source: salt://watchdog/files/watchdog-2.0.2-py3-none-win_amd64.whl
+    
 install_watchdog:
   pip.installed:
     - name: 'watchdog-2.0.2-py3-none-win_amd64.whl'
@@ -21,16 +28,17 @@ install_watchdog:
     - upgrade: True
     - unless:
       - 'C:\salt\bin\Scripts\pip.exe show watchdog'
-#restart_minion:
-#  module.run:
-#    - cmd.run_bg:
-#      - cmd: 'salt-call --local service.restart salt-minion'
+
+restart_minion:
+  module.run:
+    - cmd.run_bg:
+      - cmd: 'salt-call --local service.restart salt-minion'
+{% endif %}
 
 
-
-do_reload_modules:
+watchdog_loaded:
   test.configurable_test_state:
-    - name: blah
+    - name: watchdog loaded
     - changes: False
     - result: True
     - comment: |
