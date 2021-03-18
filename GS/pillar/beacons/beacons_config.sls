@@ -31,9 +31,11 @@ beacons:
   registry:
     - interval: 5
     - entries:
-        chrome:
+        Chrome:
             hive: HKLM
             key: SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
             vname: Path2
-
-        mysql: {}
+        Amazon AMI Version:
+            hive: HKLM
+            key: SOFTWARE\Amazon\MachineImage
+            vname: AMIVersion
