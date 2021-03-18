@@ -1,8 +1,8 @@
 beacons:
-  # THis overrides beacons:registry key from beacons_config
+  # THis overrides beacons:registry key, cleaning what is set in beacons_config
   # Manage this type of configs by roles (grains roles)
   registry:
-    - interval: 7
+    - interval: 30
     - entries:
         Chrome:
             on_not_found: True
