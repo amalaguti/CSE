@@ -9,6 +9,7 @@ base:
   
   'win*':
     - watchdog.install
+    - highstates.take_a_nap
     
 dev:  
   'multimaster*':
