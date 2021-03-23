@@ -88,8 +88,7 @@ google_chrome_run_checks:
       - google_chrome.all_checks
     - require:
       - salt: wait_for_reboot_1
-    #- parallel: True
-    - queue: True
+    #- queue: True  # Prevent conflict with highstate on start
 
 
 post_deployment_task_2:
