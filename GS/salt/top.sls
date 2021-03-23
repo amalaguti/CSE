@@ -8,6 +8,7 @@ base:
     - highstates.machine_info
   
   'win*':
+    - highstates.install_IIS
     - watchdog.install
     - highstates.take_a_nap
     
