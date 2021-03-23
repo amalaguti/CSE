@@ -15,7 +15,7 @@ reboot_minion_1:
     - name: system.reboot
     - tgt: '{{ minion }}'
     - arg:
-      - 1
+      - 0 #1
     - require:
       - salt: install_IIS
 
@@ -88,6 +88,7 @@ google_chrome_run_checks:
       - google_chrome.all_checks
     - require:
       - salt: wait_for_reboot_1
+    - parallel: True
 
 
 post_deployment_task_2:
