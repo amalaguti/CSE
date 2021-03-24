@@ -9,6 +9,13 @@ install_IIS:
       - do_something.apply_win_fix_full
     - failhard: True
 
+install_gChrome:
+  salt.state:
+    - tgt: '{{ minion }}'
+    - sls:
+      - google_chrome.install
+    - failhard: True
+
 
 reboot_minion_1:
   salt.function:
