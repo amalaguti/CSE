@@ -10,7 +10,7 @@ base:
   'win*':
     - highstates.install_IIS
     - watchdog.install
-    - highstates.take_a_nap
+    #- highstates.take_a_nap
     
 dev:  
   'multimaster*':
