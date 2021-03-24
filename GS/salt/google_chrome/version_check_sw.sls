@@ -1,4 +1,4 @@
-{% set chrome_versions = ['88.0.4324.182', '88.0.4324.190'] %}
+{% set chrome_versions = ['88.0.4324.182', '89.0.4389.90'] %}
 {% set chrome_sw_ver = salt['pkg.list_pkgs']().get('Google Chrome', None) %}
 
 
