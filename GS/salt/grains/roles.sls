@@ -27,7 +27,7 @@ grain_role:
     - name: roles
     - force: True
     - value: 
-      - 'Chromer' 
+      - ['Chromer']
     {% endif %}  
     {% endif %}
  
