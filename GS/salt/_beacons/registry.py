@@ -33,6 +33,8 @@ def beacon(config):
 
         reg_entry_check = __salt__["reg.read_value"](reg_entry_config['hive'], reg_entry_config['key'], vname=reg_entry_config['vname'])
 
+        #  TODO:
+        #  CHECK BEHAVIOR/EVENT DATA WHEN ENTRY NOT FOUND
         if not reg_entry_check['success'] and reg_entry_config['on_not_found'] == True:
             log.info(">>>> Beacon registry ENTRY NOT FOUND {}".format(reg_entry))
             ret_dict[reg_entry] = "NOT FOUND"
@@ -40,7 +42,8 @@ def beacon(config):
             ret_dict["tag"] = reg_entry
             ret.append(ret_dict)
 
-        if reg_entry_config['value'] != reg_entry_check['vdata']:
+        #if reg_entry_config['value'] != reg_entry_check['vdata']:
+        if reg_entry_check['success'] and (reg_entry_config['value'] != reg_entry_check['vdata']):
             log.info(">>>> Beacon registry {} MISMATCH {}".format(reg_entry_config['value'], reg_entry_check['vdata']))
             ret_dict[reg_entry] = reg_entry_check
             ret_dict["reg_entry"] = reg_entry
