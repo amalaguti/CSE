@@ -7,9 +7,9 @@ beacons:
         Chrome:
             on_not_found: True
             hive: HKLM
-            key: SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exeX
+            key: SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
             vname: Path
-            value: 'xC:\Program Files\Google\Chrome\Application'
+            value: 'C:\Program Files\Google\Chrome\Application'
         Amazon AMI Version:
             on_not_found: True
             hive: HKLM
