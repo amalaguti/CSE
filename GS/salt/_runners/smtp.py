@@ -100,7 +100,8 @@ def send_msg(
         salt '*' smtp.send_msg 'admin@example.com' 'This is a salt module test' username='myuser' password='verybadpass' sender='admin@example.com' server='smtp.domain.com' attachments="['/var/log/messages']"
     """
     if profile:
-        creds = __salt__["config.option"](profile)
+        #creds = __salt__["config.option"](profile)
+        creds = __opts__[profile]
         server = creds.get("smtp.server")
         use_ssl = creds.get("smtp.tls")
         sender = creds.get("smtp.sender")
