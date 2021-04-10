@@ -3,7 +3,7 @@
 # cat /etc/salt/master.d/smtp.conf
 #my-smtp-login:
 #  smtp.server: email-smtp.us-east-2.amazonaws.com
-#  smtp.tls: True
+#  smtp.tls: "True" --> /modules/smtp.py expects string
 #  smtp.sender: adrian.malaguti@turtletraction.com
 #  smtp.username: 
 #  smtp.password: 
