@@ -46,12 +46,16 @@ def engine_maintenance(minion='saltmaster', sat_transmitter='saltmaster', approv
         resp = __salt__['state.orchestrate']('vessel.orch_maintenance', pillar={"minion": minion})
         log.info(">>>>>>>> Orchestration return: {}".format(resp))
 
+        # remove 'out' key from salt.function return
+        # This allows the highstate outputter to display the returned data from salt.function
+        # when returned data is dictionary (no issues with string, int, boolean)
+        resp['data'][master_id]['salt_|-engine_maintenance_check_|-vessel_engine.full_check_|-function']['changes'].pop('out', None)
+
+
         # Inject approved dict into orchestration return
         resp['data'][master_id].update(approved)
 
         # Get orchestration result
-        #ret = {}
-        #ret = resp['data'][master_id]
         orch_result = {}
         orch_result = resp['data'][master_id]
         #log.info(ret)
@@ -80,7 +84,7 @@ def engine_maintenance(minion='saltmaster', sat_transmitter='saltmaster', approv
 
         log.info(">>>>>>>> Engine Maintenance complete: {}".format(resp))
 
-        return resp
+        #return resp
     else:
         log.info(">>>>>>>> Vessel Maintenance runner rejected")
         rejected = __salt__['salt.cmd']('state.sls', 'vessel.approval_rejected')
@@ -89,4 +93,7 @@ def engine_maintenance(minion='saltmaster', sat_transmitter='saltmaster', approv
         # Prepare response with highstate outputter format and retcode 1
         resp = {}
         resp.update({'data': {'saltmaster': rejected }, 'outputter': 'highstate', 'retcode': 1})
-        return resp
+        #return resp
+
+        
+    return resp
