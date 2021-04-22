@@ -9,7 +9,7 @@ beacons:
             hive: HKLM
             key: SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe
             vname: Path
-            value: 'C:\Program Files\Google\Chrome\Application'
+            value: 'C:\Program Files BAD ENtRY\Google\Chrome\Application'
         Amazon AMI Version:
             on_not_found: True
             hive: HKLM
