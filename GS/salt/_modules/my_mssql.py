@@ -81,14 +81,13 @@ def tsql_insert(query, **kwargs):
     conn = _get_connection(**kwargs)
     conn.autocommit(True)
     cur = conn.cursor()
-    log.info(">>>>>>> cur: {}".format(cur))
     cur.execute(query)
-    log.info(">>>>>>> cur: {}".format(cur))
-    log.info(">>>>>>> cur: {}".format(cur.rowcount))
-    # Making sure the result is JSON serializable
-    return salt.utils.json.loads(
-            _MssqlEncoder().encode({"resultset": cur.fetchall()})
-        )["resultset"]
+    log.info(">>>>>>> row count: {}".format(cur.rowcount))
+    if cur.rowcount == 1:
+        return True
+    else:
+        return False
+
     #except Exception as err:  # pylint: disable=broad-except
     #    # Trying to look like the output of cur.fetchall()
     #    return (("Could not run the query",), (six.text_type(err),))
