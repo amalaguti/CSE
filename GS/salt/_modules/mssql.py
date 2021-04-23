@@ -6,6 +6,14 @@ Module to provide INSERT/UPDATE support for mssql module
             - mssql.py Salt module
 """
 
+# Import python libs
+from __future__ import absolute_import, print_function, unicode_literals
+
+# Import Salt libs
+import salt.ext.six as six
+import salt.utils.json
+
+
 try:
     import pymssql
 
