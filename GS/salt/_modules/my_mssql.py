@@ -67,18 +67,20 @@ class _MssqlEncoder(salt.utils.json.JSONEncoder):
         return six.text_type(o)
 
 
-def tsql_query2(query, **kwargs):
+def tsql_insert(query, **kwargs):
     """
-    Run a SQL query and return query result as list of tuples, or a list of dictionaries if as_dict was passed, or an empty list if no data is available.
-
+    Run a SQL INSERT query, by autocommitting the insert statement
+    
     CLI Example:
 
     .. code-block:: bash
 
-        salt minion mssql.tsql_query 'SELECT @@version as version' as_dict=True
+        salt minion mssql.tsql_insert 'INSERT INTO ...' as_dict=True
     """
     #try:
-    cur = _get_connection(**kwargs).cursor()
+    conn = _get_connection(**kwargs)
+    conn.autocommit(True)
+    cur = conn.cursor()
     log.info(">>>>>>> cur: {}".format(cur))
     cur.execute(query)
     log.info(">>>>>>> cur: {}".format(cur))
