@@ -15,6 +15,9 @@ import salt.utils.json
 
 import salt.modules.mssql as mssql
 
+# Define the module's virtual name
+__virtualname__ = "mssql"
+
 try:
     import pymssql
 
@@ -27,7 +30,7 @@ def __virtual__():
     Only load this module if all imports succeeded bin exists
     """
     if HAS_ALL_IMPORTS:
-        return True
+        return __virtual__
     return (
         False,
         "The mssql execution module cannot be loaded: the pymssql python library is not available.",
