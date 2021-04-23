@@ -77,17 +77,16 @@ def tsql_insert(query, **kwargs):
 
         salt minion mssql.tsql_insert 'INSERT INTO ...' as_dict=True
     """
-    #try:
-    conn = _get_connection(**kwargs)
-    conn.autocommit(True)
-    cur = conn.cursor()
-    cur.execute(query)
-    log.info(">>>>>>> row count: {}".format(cur.rowcount))
-    if cur.rowcount == 1:
-        return True
-    else:
-        return False
-
-    #except Exception as err:  # pylint: disable=broad-except
-    #    # Trying to look like the output of cur.fetchall()
-    #    return (("Could not run the query",), (six.text_type(err),))
+    try:
+        conn = _get_connection(**kwargs)
+        conn.autocommit(True)
+        cur = conn.cursor()
+        cur.execute(query)
+        log.info(">>>>>>> row count: {}".format(cur.rowcount))
+        if cur.rowcount == 1:
+            return True
+        else:
+            return False
+    except Exception as err:  # pylint: disable=broad-except
+        # Trying to look like the output of cur.fetchall()
+        return (("Could not run the query",), (six.text_type(err),))
