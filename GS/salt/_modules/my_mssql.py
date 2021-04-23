@@ -13,7 +13,6 @@ from __future__ import absolute_import, print_function, unicode_literals
 import salt.ext.six as six
 import salt.utils.json
 
-import salt.modules.mssql as mssql
 
 import logging
 log = logging.getLogger(__name__)
@@ -28,6 +27,16 @@ try:
 except ImportError:
     HAS_ALL_IMPORTS = False
 
+_DEFAULTS = {
+    "server": "localhost",
+    "port": 1433,
+    "user": "sysdba",
+    "password": "",
+    "database": "",
+    "as_dict": False,
+}
+
+
 def __virtual__():
     """
     Only load this module if all imports succeeded bin exists
@@ -40,8 +49,19 @@ def __virtual__():
         "The mssql execution module cannot be loaded: the pymssql python library is not available.",
     )
 
+def _get_connection(**kwargs):
+    connection_args = {}
+    for arg in ("server", "port", "user", "password", "database", "as_dict"):
+        if arg in kwargs:
+            connection_args[arg] = kwargs[arg]
+        else:
+            connection_args[arg] = __salt__["config.option"](
+                "mssql." + arg, _DEFAULTS.get(arg, None)
+            )
+    return pymssql.connect(**connection_args)
 
-class _AMssqlEncoder(salt.utils.json.JSONEncoder):
+
+class _MssqlEncoder(salt.utils.json.JSONEncoder):
     # E0202: 68:_MssqlEncoder.default: An attribute inherited from JSONEncoder hide this method
     def default(self, o):  # pylint: disable=E0202
         return six.text_type(o)
@@ -58,14 +78,14 @@ def tsql_query2(query, **kwargs):
         salt minion mssql.tsql_query 'SELECT @@version as version' as_dict=True
     """
     #try:
-    cur = mssql._get_connection(**kwargs).cursor()
+    cur = _get_connection(**kwargs).cursor()
     log.info(">>>>>>> cur: {}".format(cur))
     cur.execute(query)
     log.info(">>>>>>> cur: {}".format(cur))
     log.info(">>>>>>> cur: {}".format(cur.rowcount))
     # Making sure the result is JSON serializable
     return salt.utils.json.loads(
-            _AMssqlEncoder().encode({"resultset": cur.fetchall()})
+            _MssqlEncoder().encode({"resultset": cur.fetchall()})
         )["resultset"]
     #except Exception as err:  # pylint: disable=broad-except
     #    # Trying to look like the output of cur.fetchall()
