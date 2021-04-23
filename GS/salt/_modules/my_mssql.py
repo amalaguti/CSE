@@ -30,7 +30,7 @@ def __virtual__():
     Only load this module if all imports succeeded bin exists
     """
     if HAS_ALL_IMPORTS:
-        return __virtual__
+        return __virtualname__
     return (
         False,
         "The mssql execution module cannot be loaded: the pymssql python library is not available.",
