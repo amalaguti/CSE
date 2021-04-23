@@ -15,6 +15,9 @@ import salt.utils.json
 
 import salt.modules.mssql as mssql
 
+import logging
+log = logging.getLogger(__name__)
+
 # Define the module's virtual name
 #__virtualname__ = "mssql"
 
@@ -38,7 +41,7 @@ def __virtual__():
     )
 
 
-class _MssqlEncoder(salt.utils.json.JSONEncoder):
+class _AMssqlEncoder(salt.utils.json.JSONEncoder):
     # E0202: 68:_MssqlEncoder.default: An attribute inherited from JSONEncoder hide this method
     def default(self, o):  # pylint: disable=E0202
         return six.text_type(o)
@@ -56,10 +59,13 @@ def tsql_query2(query, **kwargs):
     """
     try:
         cur = mssql._get_connection(**kwargs).cursor()
+        log.info(">>>>>>> cur: {}".format(cur))
         cur.execute(query)
+        log.info(">>>>>>> cur: {}".format(cur))
+        log.info(">>>>>>> cur: {}".format(cur.rowcount))
         # Making sure the result is JSON serializable
         return salt.utils.json.loads(
-            _MssqlEncoder().encode({"resultset": cur.fetchall()})
+            _AMssqlEncoder().encode({"resultset": cur.fetchall()})
         )["resultset"]
     except Exception as err:  # pylint: disable=broad-except
         # Trying to look like the output of cur.fetchall()
