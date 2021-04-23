@@ -57,16 +57,16 @@ def tsql_query2(query, **kwargs):
 
         salt minion mssql.tsql_query 'SELECT @@version as version' as_dict=True
     """
-    try:
-        cur = mssql._get_connection(**kwargs).cursor()
-        log.info(">>>>>>> cur: {}".format(cur))
-        cur.execute(query)
-        log.info(">>>>>>> cur: {}".format(cur))
-        log.info(">>>>>>> cur: {}".format(cur.rowcount))
-        # Making sure the result is JSON serializable
-        return salt.utils.json.loads(
+    #try:
+    cur = mssql._get_connection(**kwargs).cursor()
+    log.info(">>>>>>> cur: {}".format(cur))
+    cur.execute(query)
+    log.info(">>>>>>> cur: {}".format(cur))
+    log.info(">>>>>>> cur: {}".format(cur.rowcount))
+    # Making sure the result is JSON serializable
+    return salt.utils.json.loads(
             _AMssqlEncoder().encode({"resultset": cur.fetchall()})
         )["resultset"]
-    except Exception as err:  # pylint: disable=broad-except
-        # Trying to look like the output of cur.fetchall()
-        return (("Could not run the query",), (six.text_type(err),))
+    #except Exception as err:  # pylint: disable=broad-except
+    #    # Trying to look like the output of cur.fetchall()
+    #    return (("Could not run the query",), (six.text_type(err),))
