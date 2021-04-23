@@ -13,6 +13,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 import salt.ext.six as six
 import salt.utils.json
 
+import salt.modules.mssql as mssql
 
 try:
     import pymssql
@@ -50,7 +51,7 @@ def tsql_query2(query, **kwargs):
         salt minion mssql.tsql_query 'SELECT @@version as version' as_dict=True
     """
     try:
-        cur = _get_connection(**kwargs).cursor()
+        cur = mssql._get_connection(**kwargs).cursor()
         cur.execute(query)
         # Making sure the result is JSON serializable
         return salt.utils.json.loads(
