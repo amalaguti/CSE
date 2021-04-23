@@ -18,7 +18,7 @@ import logging
 log = logging.getLogger(__name__)
 
 # Define the module's virtual name
-#__virtualname__ = "mssql"
+__virtualname__ = "mssql"
 
 try:
     import pymssql
@@ -42,8 +42,8 @@ def __virtual__():
     Only load this module if all imports succeeded bin exists
     """
     if HAS_ALL_IMPORTS:
-        #return __virtualname__
-        return True
+        return __virtualname__
+        #return True
     return (
         False,
         "The mssql execution module cannot be loaded: the pymssql python library is not available.",
