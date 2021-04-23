@@ -75,7 +75,7 @@ def tsql_insert(query, **kwargs):
 
     .. code-block:: bash
 
-        salt minion mssql.tsql_insert 'INSERT INTO ...' as_dict=True
+        salt minion mssql.tsql_insert "INSERT INTO table (column_name, column_name,...) VALUES ('value 1', 'value 2', ...)"
     """
     try:
         conn = _get_connection(**kwargs)
