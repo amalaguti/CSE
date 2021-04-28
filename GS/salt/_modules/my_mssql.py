@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Module to provide INSERT/UPDATE support for mssql module
-:depends:   - FreeTDS
-            - pymssql Python module
-            - mssql.py Salt module
+:depends:   
+    - FreeTDS
+    - pymssql Python module
+:note:
+    The function tsql_query in mssql.py Salt module does not autocommit
+    causing INSERT statements to fail.
+    This module deals with that issue by autocommiting the INSERT statement.
 """
 
 # Import python libs
