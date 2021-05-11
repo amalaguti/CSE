@@ -135,10 +135,10 @@ salt $BASE_MINION_NAME\* grains.set "udg:Role" "engine_device"
 salt-call grains.set "udg:Role" "engine_master_minion"
 
 # udg:Engine_Device_Name
-# REAL Windows MINION
 # Legions minions
 for DEVICE in ${_ENGINE_DEVICES[@]}; do
   echo "Grain udg:Engine_Device_Name on $DEVICE"
   salt $BASE_MINION_NAME-$DEVICE-0 grains.set "udg:Engine_Device_Name" "$DEVICE"
 done
+# REAL Windows MINION
 salt $BASE_MINION_NAME-mop-a grains.set "udg:Engine_Device_Name" "mop-a"
