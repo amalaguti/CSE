@@ -11,6 +11,8 @@
 # Include ONLY devices to be represented by Salt Legion (simulated) minions
 # Exclude device mop-a from the list due it's real minion
 
+# IMPORTANT: Script requires a minion (linux) named $BASE_MINION_NAME-legion
+
 shopt -s nocasematch
 for ARGUMENT in "$@"
 do
@@ -51,7 +53,7 @@ for DEVICE in ${_ENGINE_DEVICES[@]}; do
 done
 
 
-# TODO: Pick real minion name
+# IMPORTANT: Script requires a minion (linux) named $BASE_MINION_NAME-legion
 echo "1- Installing reqs: git, Salt Legion, Salt Master"
 salt $BASE_MINION_NAME-legion pkg.install salt-master
 salt $BASE_MINION_NAME-legion service.disable salt-master
@@ -86,7 +88,7 @@ salt $BASE_MINION_NAME-legion file.set_mode /opt/legion/legions/legions_start.sh
 for DEVICE in ${_ENGINE_DEVICES[@]}; do
   echo "Adding entry for $DEVICE on legion start script"
   salt $BASE_MINION_NAME-legion file.append /opt/legion/legions/legions_start.sh \
-    args="['/usr/bin/python3 /bin/salt-minion -c /opt/legion/legions/$BASE_MINION_NAME-$DEVICE-0 --pid-file /opt/legion/legions/$BASE_MINION_NAME-$DEVICE-0.pid -d']"
+    args="['/usr/bin/python3 /bin/salt-minion -c /opt/legion/legions/$BASE_MINION_NAME-$DEVICE-0 --pid-file /opt/legion/legions/$DEVICE/$BASE_MINION_NAME-$DEVICE-0.pid -d']"
 done
 
 # Create stop legion script
