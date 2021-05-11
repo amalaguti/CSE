@@ -53,6 +53,12 @@ done
 
 # TODO: Pick real minion name
 echo "1- Installing reqs: git, Salt Legion, Salt Master"
+salt $BASE_MINION_NAME-legion pkg.install salt-master
+salt $BASE_MINION_NAME-legion service.disable salt-master
+salt $BASE_MINION_NAME-legion service.stop salt-master
+salt $BASE_MINION_NAME-legion pkg.install python3-pip
+salt $BASE_MINION_NAME-legion git.clone /opt/legion/ https://github.com/saltstack/legion
+salt $BASE_MINION_NAME-legion cmd.run "pip3 install -e /opt/legion/."
 salt $BASE_MINION_NAME-legion git.clone /opt/legion/ https://github.com/saltstack/legion
 salt $BASE_MINION_NAME-legion cmd.run "pip3 install -e /opt/legion/."
 
@@ -62,7 +68,7 @@ echo "2- Deploying Legion Minions for engine devices"
 for DEVICE in ${_ENGINE_DEVICES[@]}; do
   echo Creating legion minion for device $DEVICE
   salt $BASE_MINION_NAME-legion cmd.run_bg \
-    "/usr/local/bin/legion -m1 -l0 --master=$MASTER --rand-uuid --name=$BASE_MINION_NAME-$DEVICE --temp-dir=/opt/legion/legions --no-clean &"
+    "/usr/local/bin/legion -m1 -l0 --master=$MASTER --rand-uuid --name=$BASE_MINION_NAME-$DEVICE --temp-dir=/opt/legion/legions/$DEVICE --no-clean &"
   sleep 5
 done
 sleep 10
