@@ -86,7 +86,7 @@ salt-call file.set_mode /opt/legion/legions/legions_start.sh 0754
 for DEVICE in ${_ENGINE_DEVICES[@]}; do
   echo "Adding entry for $DEVICE on legion start script"
   salt-call file.append /opt/legion/legions/legions_start.sh \
-    args="['/usr/bin/python3 /bin/salt-minion -c /opt/legion/legions/$BASE_MINION_NAME-$DEVICE-0 --pid-file /opt/legion/legions/$BASE_MINION_NAME-$DEVICE-0.pid -d']"
+    args="['/usr/bin/python3 /bin/salt-minion -c /opt/legion/legions/$BASE_MINION_NAME-$DEVICE-0 --pid-file /opt/legion/legions/$DEVICE/$BASE_MINION_NAME-$DEVICE-0.pid -d']"
 done
 
 # Create stop legion script
