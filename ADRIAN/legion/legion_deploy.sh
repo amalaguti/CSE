@@ -59,8 +59,7 @@ salt $BASE_MINION_NAME-legion service.stop salt-master
 salt $BASE_MINION_NAME-legion pkg.install python3-pip
 salt $BASE_MINION_NAME-legion git.clone /opt/legion/ https://github.com/saltstack/legion
 salt $BASE_MINION_NAME-legion cmd.run "pip3 install -e /opt/legion/."
-salt $BASE_MINION_NAME-legion git.clone /opt/legion/ https://github.com/saltstack/legion
-salt $BASE_MINION_NAME-legion cmd.run "pip3 install -e /opt/legion/."
+
 
 
 # Deploy Legion Minions for engine devices
