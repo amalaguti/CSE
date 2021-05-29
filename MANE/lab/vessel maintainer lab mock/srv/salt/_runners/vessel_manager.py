@@ -43,6 +43,7 @@ def engine_maintenance(minion='saltmaster', sat_transmitter='saltmaster', approv
         log.info(">>>>>>>> Maintenance of Engine {}".format(master_id))
 
         # Run orchestration
+        log.info(">>>>>>>> Orchestration MINION TARGET: {}".format(minion))
         resp = __salt__['state.orchestrate']('vessel.orch_maintenance', pillar={"minion": minion})
         log.info(">>>>>>>> Orchestration return: {}".format(resp))
 

@@ -1,4 +1,10 @@
 {% set minion = salt['pillar.get']('minion') %}
+show_minion:
+  test.configurable_test_state:
+    - name: show minion
+    - changes: False
+    - result: True
+    - comment: {{ minion }}
 
 retrieve_files:
   salt.runner:
