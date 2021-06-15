@@ -120,10 +120,18 @@ def get(key, profile=None):
     q = profile.get(
         "get_query", ("SELECT value FROM {0} WHERE " "key=:key".format(table))
     )
+    log.info(">>>>>>>> profile query: {}".format(q))
+
     res = cur.execute(q, {"key": key})
     res = res.fetchone()
     if not res:
         return None
 
-    return res[0]
+    resp = {}
+    resp['timestamp'] = res[0]
+    resp['server'] = res[1]
+    resp['alarm'] = res[2]
+
     #return salt.utils.msgpack.unpackb(res[0])
+    #return res
+    return resp
