@@ -2,7 +2,7 @@ beacons:
   status:
     - time:
       - all
-    - interval: 30
+    - interval: 10
   service:
     - interval: 600
     - services:
