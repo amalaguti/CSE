@@ -2,7 +2,7 @@ beacons:
   status:
     - time:
       - all
-    - interval: 600
+    - interval: 30
   service:
     - interval: 600
     - services:
@@ -10,7 +10,7 @@ beacons:
           onchangeonly: True
           emitatstartup: False
   diskusage:
-    -  interval: 20
+    -  interval: 600
     - 'c:\\': 10%
   watchdog:
     #- interval: 20
@@ -29,7 +29,7 @@ beacons:
             - move
            
   registry:
-    - interval: 5
+    - interval: 600
     - entries:
         Chrome:
             on_not_found: True
