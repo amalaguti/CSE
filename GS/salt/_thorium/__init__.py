@@ -1,3 +1,4 @@
+# COPY TO (overwrite) salt/thorium/__init__.py
 # -*- coding: utf-8 -*-
 """
 The thorium system allows for advanced event tracking and reactions
