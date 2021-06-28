@@ -113,9 +113,12 @@ def timeout(name, start_time=0, end_time=24, delete=0, reject=0):
                 if reject and (now - __context__[ktr][id_]) > reject:
                     log.info(">>>>>>>>>>>>>>> THORIUM key.py #4 minion {} not reporting - reject - __context__[ktr][id_] {}".format(id_, __context__[ktr][id_]))
                     reject_set.add(id_)
-
+     
+    log.info(">>>>>>>>>>>>>>>>>>> key.py NEXT id_ >>>>>>>>>>>>>>>>>>")
     # AM TWEAK
+    log.info(">>>>>>>>>>>>>>> THORIUM key.py #5 CHECK TIME")
     if check_time(start_time, end_time):
+        log.info(">>>>>>>>>>>>>>> THORIUM key.py #6 remove {}".format(remove))
         # AM TWEAK
         if bool(remove):
             ret["comment"]: "Minion keys removed"
