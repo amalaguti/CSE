@@ -70,8 +70,8 @@ def timeout(name, start_time=0, end_time=24, delete=0, reject=0):
               - status: statreg
             - delete: 300
     """
-    log.info(">>>>>>>>>>>>>>> CUSTOM THORIUM MODULE!!!!!!!!")
-    log.info(">>>>>>>>>>>>>>> THORIUM REGISTER {}".format(__reg__))
+    log.info(">>>>>>>>>>>>>>> CUSTOM THORIUM MODULE key.py !!!!!!!!")
+    log.info(">>>>>>>>>>>>>>> key.py THORIUM REGISTER {}".format(__reg__))
     # AM
     start_time = int(start_time)
     end_time = int(end_time)
