@@ -71,7 +71,7 @@ def timeout(name, start_time=0, end_time=24, delete=0, reject=0):
             - delete: 300
     """
     log.info(">>>>>>>>>>>>>>> CUSTOM THORIUM MODULE key.py !!!!!!!!")
-    log.info(">>>>>>>>>>>>>>> key.py THORIUM REGISTER {}".format(__reg__))
+    log.info(">>>>>>>>>>>>>>> THORIUM key.py THORIUM REGISTER {}".format(__reg__))
     # AM
     start_time = int(start_time)
     end_time = int(end_time)
@@ -83,26 +83,35 @@ def timeout(name, start_time=0, end_time=24, delete=0, reject=0):
     ktr = "key_start_tracker"
     if ktr not in __context__:
         __context__[ktr] = {}
+    log.info(">>>>>>>>>>>>>>> THORIUM key.py __context__[ktr] {}".format(__context__[ktr]))
     remove = set()
     reject_set = set()
     keyapi = _get_key_api()
     current = keyapi.list_status("acc")
     for id_ in current.get("minions", []):
+        log.info(">>>>>>>>>>>>>>> THORIUM key.py checking __context__[ktr] {}".format(__context__[ktr]))
+        log.info(">>>>>>>>>>>>>>> THORIUM key.py checking minion id {} ".format(id_))
         if id_ in __reg__["status"]["val"]:
+            log.info(">>>>>>>>>>>>>>> THORIUM key.py MINION FOUND {} in register[status][val]".format(id_))
             # minion is reporting, check timeout and mark for removal
             if delete and (now - __reg__["status"]["val"][id_]["recv_time"]) > delete:
+                log.info(">>>>>>>>>>>>>>> THORIUM key.py #1 minion {} reporting - delete - recv_time {} ".format(id_, __reg__["status"]["val"][id_]["recv_time"]))
                 remove.add(id_)
             if reject and (now - __reg__["status"]["val"][id_]["recv_time"]) > reject:
+                log.info(">>>>>>>>>>>>>>> THORIUM key.py #2 minion {} reporting - reject - recv_time {} ".format(id_, __reg__["status"]["val"][id_]["recv_time"]))
                 reject_set.add(id_)
         else:
             # No report from minion recorded, mark for change if thorium has
             # been running for longer than the timeout
+            log.info(">>>>>>>>>>>>>>> THORIUM key.py ** MINION NOT FOUND {} **in register[status][val]".format(id_))
             if id_ not in __context__[ktr]:
                 __context__[ktr][id_] = now
             else:
                 if delete and (now - __context__[ktr][id_]) > delete:
+                    log.info(">>>>>>>>>>>>>>> THORIUM key.py #3 minion {} not reporting - delete - ___context__[ktr][id_] {}".format(id_, __context__[ktr][id_]))
                     remove.add(id_)
                 if reject and (now - __context__[ktr][id_]) > reject:
+                    log.info(">>>>>>>>>>>>>>> THORIUM key.py #4 minion {} not reporting - reject - __context__[ktr][id_] {}".format(id_, __context__[ktr][id_]))
                     reject_set.add(id_)
 
     # AM TWEAK
@@ -112,6 +121,7 @@ def timeout(name, start_time=0, end_time=24, delete=0, reject=0):
             ret["comment"]: "Minion keys removed"
         #
         for id_ in remove:
+            log.info(">>>>>>>>>>>>>>> THORIUM key.py DELETE KEY {}".format(id_))
             keyapi.delete_key(id_)
 
             ### AM TWEAK
@@ -120,9 +130,12 @@ def timeout(name, start_time=0, end_time=24, delete=0, reject=0):
             ###
             __reg__["status"]["val"].pop(id_, None)
             __context__[ktr].pop(id_, None)
+            log.info(">>>>>>>>>>>>>>> THORIUM key.py MINION {} REMOVED".format(id_))
         for id_ in reject_set:
             keyapi.reject(id_)
             __reg__["status"]["val"].pop(id_, None)
             __context__[ktr].pop(id_, None)
+            log.info(">>>>>>>>>>>>>>> THORIUM key.py MINION {} REJECTED".format(id_))
+                 
 
     return ret
