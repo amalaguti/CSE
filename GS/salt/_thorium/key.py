@@ -108,7 +108,9 @@ def timeout(name, start_time=0, end_time=24, delete=0, reject=0):
                 __context__[ktr][id_] = now
             else:
                 # AM
-                log.info(">>>>>>>>>>>>>>> THORIUM key.py #3PRE minion {} now {} - context: {} vs delete {}".format(id_, now, now - __context__[ktr][id_], delete))
+                now_vs_ktr = now - __context__[ktr][id_]
+                log.info("key.py #3 {}".format(now_vs_ktr))
+                #log.info(">>>>>>>>>>>>>>> THORIUM key.py #3PRE minion {}, now {} - context: {} , diff: v{} s delete {}".format(id_, now, __context__[ktr][id_], now_vs_ktr, delete))
                 ####
                 if delete and (now - __context__[ktr][id_]) > delete:
                     log.info(">>>>>>>>>>>>>>> THORIUM key.py #3 minion {} not reporting - delete - ___context__[ktr][id_] {}".format(id_, __context__[ktr][id_]))
