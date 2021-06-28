@@ -107,6 +107,7 @@ def timeout(name, start_time=0, end_time=24, delete=0, reject=0):
             if id_ not in __context__[ktr]:
                 __context__[ktr][id_] = now
             else:
+                log.info(">>>>>>>>>>>>>>> THORIUM key.py #3PRE minion {} now {} - context: {} vs delete {}".format(id_, now - __context__[ktr][id_], delete))
                 if delete and (now - __context__[ktr][id_]) > delete:
                     log.info(">>>>>>>>>>>>>>> THORIUM key.py #3 minion {} not reporting - delete - ___context__[ktr][id_] {}".format(id_, __context__[ktr][id_]))
                     remove.add(id_)
