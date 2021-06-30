@@ -18,6 +18,8 @@ def preseed_keys(minion):
     pub_path = os.path.join(tdir, "minion.pub")
     log.info("Locate minion.pem {}".format(priv_path))
     log.info("Locate minion.pub {}".format(pub_path))
+    print("Locate minion.pem {}".format(priv_path))
+    print("Locate minion.pub {}".format(pub_path))
     with salt.utils.files.fopen(priv_path, 'w') as fp_:
         fp_.write(priv_key)
     with salt.utils.files.fopen(pub_path, 'w') as fp_:
