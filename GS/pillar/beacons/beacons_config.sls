@@ -12,21 +12,21 @@ beacons:
   diskusage:
     -  interval: 600
     - 'c:\\': 10%
-  watchdog:
+  #watchdog:
     #- interval: 20
-    - directories:
-        'C:\info':
-          mask:
-            - create
-            - modify
-            - delete
-            - move
-        'C:\watchdog':
-          mask:
-            - create
-            - modify
-            - delete
-            - move
+  #  - directories:
+  #      'C:\info':
+  #        mask:
+  #          - create
+  #          - modify
+  #          - delete
+  #          - move
+  #      'C:\watchdog':
+  #        mask:
+  #          - create
+  #          - modify
+  #          - delete
+  #          - move
            
   registry:
     - interval: 600
